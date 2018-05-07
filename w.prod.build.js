@@ -51,7 +51,7 @@ const prodConfig = {
 
         // 多页面情况，复制
         const pageContent = fs.readFileSync('./dist/index.html')
-        const pages = ['HelloIndex2','p2']
+        const pages = ['HelloIndex','HelloIndex2']
         pages.forEach(name => {
           fs.writeFileSync(`./dist/${name}.html`, pageContent)
         })
