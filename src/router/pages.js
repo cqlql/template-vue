@@ -9,5 +9,12 @@ export default [
     name: 'HelloIndex',
     meta: {title: 'HelloIndex'},
     component: Index
+  },
+  {
+    path: '/hello2',
+    alias: ['/helloIndex2'],
+    name: 'HelloIndex2',
+    meta: {title: 'HelloIndex2'},
+    component: Index
   }
 ]

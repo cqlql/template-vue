@@ -1,3 +1,4 @@
+const fs = require('fs-extra')
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -47,6 +48,14 @@ const prodConfig = {
         // 编译后删除
         // filterRemove(outputPath, /\.(css)$/)
         // filterRemove(outputPath + '/static', /\.(js|css)$/)
+
+        // 多页面情况，复制
+        const pageContent = fs.readFileSync('./dist/index.html')
+        const pages = ['HelloIndex2','p2']
+        pages.forEach(name => {
+          fs.writeFileSync(`./dist/${name}.html`, pageContent)
+        })
+
       }
     }),
     new CopyWebpackPlugin([

@@ -6,6 +6,7 @@ import '@/comm.css'
 import Vue from 'vue'
 import router from './router'
 import App from './app.vue'
+import goPage from '@/modules/go-page'
 
 // import('@/comm2.css')
 
@@ -50,3 +51,5 @@ new Vue({
 // import('@/modules/popup/debug-msg').then(({default: debug}) => {
 //   debug(navigator.userAgent)
 // })
+
+goPage(router)
