@@ -1,0 +1,4 @@
+.cf {
+  display: inline;
+}
+:global(.cf) { background: red; }
