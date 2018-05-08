@@ -17,8 +17,6 @@ webpack css modules
 :global .cf { clear: both; }
 ```
 
-默认 `:local`，即转换，可不指定
-
 **webpack.config.js**
 
 ```js
@@ -35,7 +33,6 @@ webpack css modules
   ]
 }
 ```
-
 
 ### 20180501 ---- 新方式
 
