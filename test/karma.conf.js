@@ -19,7 +19,7 @@ module.exports = function(config) {
   })
 
   config.set({
-    frameworks: ['mocha','chai-dom','chai'],
+    frameworks: ['jasmine'],
     files: ['./index.js'],
     preprocessors: {
       './index.js':['webpack', 'sourcemap']
@@ -32,12 +32,10 @@ module.exports = function(config) {
     // browsers: ['Chrome'],
     browsers: ['ChromeHeadless'],
     plugins: [
+      'karma-jasmine',
       "karma-webpack",
-      "karma-chai",
-      "karma-chai-dom",
       "karma-spec-reporter",
       "karma-sourcemap-loader",
-      "karma-mocha",
       "karma-chrome-launcher",
     ],
   })

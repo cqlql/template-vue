@@ -17,8 +17,6 @@ webpack css modules
 :global .cf { clear: both; }
 ```
 
-默认 `:local`，即转换，可不指定
-
 **webpack.config.js**
 
 ```js
@@ -36,7 +34,6 @@ webpack css modules
 }
 ```
 
-
 ### 20180501 ---- 新方式
 
 main.js
@@ -51,19 +48,3 @@ import '/main.css?module'
 ```js
 
 ```
-
-
-## css 拆分
-目前异步包中的 css 会单独生成一个对应的按需异步 css 文件， 如果是直接 import('style.css')，则会多出一个空的异步 js
-
-
-**总结：**
-
-异步包的 css 拆分会有各种冗余
-
-同步包拆分可控，包括 vue 文件
-
-异步 vue 文件中的 css 拆分还没法合并
-
-**所以，尽量还是不拆分了**
-
