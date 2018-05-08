@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
 .info {
   padding: 0 0 10px;
 }

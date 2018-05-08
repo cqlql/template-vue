@@ -1,4 +1,4 @@
-let getWebpackConfig = require('../build/webpack.base')
+let getWebpackConfig = require('../../build/webpack.base')
 
 module.exports = function(config) {
   // webpack 处理
