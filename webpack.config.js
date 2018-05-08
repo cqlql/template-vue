@@ -1,4 +1,11 @@
 const webpackConfig = require('./build/webpack.dev')(__dirname)
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+webpackConfig.plugins.push(
+  new HtmlWebpackPlugin({
+    filename: './HelloIndex2.html',
+    template: './src/index.html',
+  })
+)
 // proxy 文档：https://github.com/chimurai/http-proxy-middleware
 // webpackConfig.devServer.proxy = [{
 //   context: ["/Content"],
