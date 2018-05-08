@@ -112,16 +112,18 @@ module.exports = function (dirname) {
         {
           test: /\.css$/,
           // test: /\.(css|scss)$/,
-          oneOf: getCssLoaders()
+
+          // 一起处理
+          // oneOf: getCssLoaders()
           // 分开处理 vue css
-          // oneOf: [{
-          //     test: /\.vue/,
-          //     oneOf: getCssLoaders()
-          //   },
-          //   {
-          //     oneOf: getCssLoaders()
-          //   }
-          // ],
+          oneOf: [{
+              test: /\.vue/,
+              oneOf: getCssLoaders()
+            },
+            {
+              oneOf: getCssLoaders()
+            }
+          ],
         },
         {
           test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
