@@ -59,6 +59,8 @@ module.exports = function (dirname) {
           },
           'postcss-loader?sourceMap=true'
         ],
+
+        // 旧代码备份
         // use: ['vue-style-loader', {
         //   loader: 'css-loader',
         //   options: {
