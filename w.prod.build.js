@@ -7,6 +7,7 @@ const filterRemove = require('./build/filter-remove')
 const ScriptPlugin = require('./build/script-plugin')
 const merge = require('webpack-merge')
 const getWebpackConfig = require('./build/webpack.prod')
+const getPagesName = require('./build/get-pages-name')
 
 // 命令行参数
 const argv = require('yargs').argv
@@ -51,7 +52,7 @@ const prodConfig = {
 
         // 多页面情况，复制
         const pageContent = fs.readFileSync('./dist/index.html')
-        const pages = ['HelloIndex','HelloIndex2']
+        const pages = getPagesName()
         pages.forEach(name => {
           fs.writeFileSync(`./dist/${name}.html`, pageContent)
         })
