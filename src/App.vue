@@ -1,9 +1,6 @@
 <template>
   <div>
-    <transition
-      :name="transitionName"
-      :enter-active-class="transitionName&&'slide-active'"
-      :leave-active-class="transitionName&&'slide-active'">
+    <transition :name="slideName" :enter-active-class="activeClass" :leave-active-class="activeClass">
       <router-view :bus="bus"></router-view>
     </transition>
   </div>
@@ -14,7 +11,12 @@
     props: ['bus'],
     data () {
       return {
-        transitionName: ''
+        slideName: ''
+      }
+    },
+    computed: {
+      activeClass () {
+        return this.slideName && 'slide-active'
       }
     },
     watch: {
@@ -30,7 +32,7 @@
             toDepth = to.meta.zIndex
             fromDepth = from.meta.zIndex
           }
-          this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+          this.slideName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
         }
       }
     }
