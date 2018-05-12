@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition :name="slideName" :enter-active-class="activeClass" :leave-active-class="activeClass">
-      <router-view :bus="bus"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
