@@ -1,41 +1,45 @@
 <template>
   <div>
-    <transition :name="slideName" :enter-active-class="activeClass" :leave-active-class="activeClass">
+    <VTransition :name="slideName" :activeClass="activeClass">
       <router-view></router-view>
-    </transition>
+    </VTransition>
   </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        slideName: ''
-      }
-    },
-    computed: {
-      activeClass () {
-        return this.slideName && 'slide-active'
-      }
-    },
-    watch: {
-      '$route' (to, from) {
-        if (from.name) {
-          let toPath = to.path
-          let fromPath = from.path
-          toPath = toPath.trim().replace(/\/$/, '').replace(/\/+/, '/')
-          fromPath = fromPath.trim().replace(/\/$/, '').replace(/\/+/, '/')
-          let toDepth = toPath.split('/').length
-          let fromDepth = fromPath.split('/').length
-          if (toDepth === fromDepth) {
-            toDepth = to.meta.zIndex
-            fromDepth = from.meta.zIndex
-          }
-          this.slideName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+import VTransition from '@/components/v-transition'
+export default {
+  data () {
+    return {
+      slideName: ''
+    }
+  },
+  computed: {
+    activeClass () {
+      return this.slideName && 'slide-active'
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (from.name) {
+        let toPath = to.path
+        let fromPath = from.path
+        toPath = toPath.trim().replace(/\/$/, '').replace(/\/+/, '/')
+        fromPath = fromPath.trim().replace(/\/$/, '').replace(/\/+/, '/')
+        let toDepth = toPath.split('/').length
+        let fromDepth = fromPath.split('/').length
+        if (toDepth === fromDepth) {
+          toDepth = to.meta.zIndex
+          fromDepth = from.meta.zIndex
         }
+        this.slideName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
       }
     }
+  },
+  components: {
+    VTransition
   }
+}
 </script>
 
 <style scoped>
