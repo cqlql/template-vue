@@ -17,7 +17,7 @@ import App from './app.vue'
 
 // console.log(comm)
 
-Vue.prototype.bus = new Vue({
+Vue.prototype.$bus = new Vue({
   data: {}
 })
 // Vue.prototype.$preloaderFull = preloaderFull
