@@ -1,5 +1,8 @@
-// 使用 FriendlyErrorsWebpackPlugin
+// 友好的 webpack 编译信息
+
+// 自动获取端口
 const portfinder = require('portfinder')
+
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 module.exports = function (webpackConfig) {
   return new Promise(function(resolve, reject) {
