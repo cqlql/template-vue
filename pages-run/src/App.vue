@@ -1,25 +1,17 @@
 <template>
   <div>
     <VTransition :name="slideName" :activeClass="activeClass">
-      <component v-bind:is="currentComponent"></component>
+      <router-view></router-view>
     </VTransition>
   </div>
 </template>
 
 <script>
 import VTransition from '@/components/v-transition'
-import componentList from './router.js'
-let components = {
-  VTransition
-}
-componentList.forEach(function (d) {
-  components[d.name] = d.component
-})
 export default {
   data () {
     return {
-      currentComponent: '',
-      slideName: 'slide-right'
+      slideName: ''
     }
   },
   computed: {
@@ -44,12 +36,9 @@ export default {
       }
     }
   },
-  methods: {
-    open (name) {
-      this.currentComponent = name
-    }
-  },
-  components
+  components: {
+    VTransition
+  }
 }
 </script>
 

@@ -4,7 +4,6 @@ import '@/comm.css'
 
 // import '@/modules/corejs/em-auto'
 import Vue from 'vue'
-import router from './router'
 import App from './app.vue'
 
 // import('@/comm2.css')
@@ -26,27 +25,25 @@ Vue.prototype.bus = new Vue({
 // Vue.prototype.$simpleMsg = msgSimple
 // Vue.use(click)
 
-router.beforeEach((to, from, next) => {
-  // preloaderFull.show()
-  document.title = to.meta.title || ''
-  next()
-})
-router.afterEach(() => {
-  // preloaderFull.close()
-})
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
+let vm = new Vue({
   // 根实例用可实现替换绑定的元素
-  template: '<app/>',
+  template: '<app ref="app"/>',
   components: {
     App
   }
 })
 
-// router.push({name: 'ConferenceCreate'})
-// import('@/modules/popup/debug-msg').then(({default: debug}) => {
-//   debug(navigator.userAgent)
-// })
+// document.body.appendChild(vm.$mount().$el)
+// let app = vm.$refs.app
+// console.log(vm)
+
+// export default {
+//   mount (el) {
+//     vm.$mount(el)
+//   },
+//   open: app.open
+// }
+export default function (el) {
+  vm.$mount(el)
+  return vm.$refs.app
+}
