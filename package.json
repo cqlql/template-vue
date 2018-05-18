@@ -5,7 +5,7 @@
   "author": "陈桥黎",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --progress",
+    "start": "cd pages-run&webpack-dev-server --progress",
     "build": "node w.prod.build --ios",
     "build.test": "node w.prod.build --test",
     "test": "karma start test/unit/karma.conf.js"

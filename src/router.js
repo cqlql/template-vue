@@ -9,15 +9,17 @@ function importAll (r) {
   })
 }
 
-// 指定只打包具体 router
-if (process.env.NODE_ENV === 'production') {
-  // 正式环境
-  importAll(require.context('./router', false, /(hello|hello2)\.js$/))
-} else {
-  // 开发环境
-  importAll(require.context('./', true, /^\.\/router\/.+?\.js$|^\.\/nav-dev.js$/))
-  // importAll(require.context('./', true, /^\.\/nav-dev.js$/))
-}
+// // 指定只打包具体 router
+// if (process.env.NODE_ENV === 'production') {
+//   // 正式环境
+//   importAll(require.context('./router', false, /(hello|hello2)\.js$/))
+// } else {
+//   // 开发环境
+//   importAll(require.context('./', true, /^\.\/router\/.+?\.js$|^\.\/nav-dev.js$/))
+//   // importAll(require.context('./', true, /^\.\/nav-dev.js$/))
+// }
+
+importAll(require.context('./router', false, /(hello|hello2)\.js$/))
 
 Vue.use(Router)
 

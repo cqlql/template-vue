@@ -35,18 +35,26 @@ router.afterEach(() => {
   // preloaderFull.close()
 })
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
+let vm = new Vue({
   router,
   // 根实例用可实现替换绑定的元素
-  template: '<app/>',
+  template: '<app ref="app"/>',
   components: {
     App
   }
 })
 
-// router.push({name: 'ConferenceCreate'})
-// import('@/modules/popup/debug-msg').then(({default: debug}) => {
-//   debug(navigator.userAgent)
-// })
+// document.body.appendChild(vm.$mount().$el)
+// let app = vm.$refs.app
+// console.log(vm)
+
+// export default {
+//   mount (el) {
+//     vm.$mount(el)
+//   },
+//   open: app.open
+// }
+export default function (el) {
+  vm.$mount(el)
+  return vm.$refs.app
+}
