@@ -21,7 +21,6 @@ export default {
 }
 </style>
 
-
 <style scoped>
 .logo {
   /* background: url('@/assets-comm/logo.png') */
