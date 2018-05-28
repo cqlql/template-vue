@@ -8,7 +8,8 @@
     "start": "webpack-dev-server --progress",
     "build": "node w.prod.build --ios",
     "build.test": "node w.prod.build --test",
-    "test": "karma start test/unit/karma.conf.js"
+    "test": "karma start test/unit/karma.conf.js",
+    "data-mock": "node ./data-mock/server.run.js"
   },
   "dependencies": {
     "vue": "^2.5.16",
