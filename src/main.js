@@ -1,38 +1,36 @@
 import '@/comm.css'
-// import '@/comm2.css?module'
-// import '@/modules/css-base/transition.css'
+// import '@/comm.css?module'
 
 // import '@/modules/corejs/em-auto'
 import Vue from 'vue'
 import router from './router'
-import App from './app.vue'
-
-// import('@/comm2.css')
+import App from './App.vue'
 
 // import click from '@/modules/corejs/dom/click.vue'
-// import msgSimple from '@/modules/popup/msg-simple'
 // import axios from '@/modules/ajax-mid'
-// import preloaderFull from '@/modules/preloader-full/preloader-full'
+import loading from '@/components/loading/plugin'
+import toast from '@/components/toast/plugin'
+import confirm from '@/components/confirm/plugin'
 // import '@/modules/zoom-touch/picture-zoom-popup-init' // 放大看图初始
 
-// console.log(comm)
+Vue.use(loading)
+Vue.use(toast)
+Vue.use(confirm)
+// Vue.use(click)
+// Vue.prototype.$axios = axios
+const $loading = Vue.loading
 
-Vue.prototype.$bus = new Vue({
+Vue.prototype.bus = new Vue({
   data: {}
 })
-// Vue.prototype.$preloaderFull = preloaderFull
-// Vue.prototype.$axios = axios
-
-// Vue.prototype.$simpleMsg = msgSimple
-// Vue.use(click)
 
 router.beforeEach((to, from, next) => {
-  // preloaderFull.show()
+  $loading.show()
   document.title = to.meta.title || ''
   next()
 })
 router.afterEach(() => {
-  // preloaderFull.close()
+  $loading.hide()
 })
 
 /* eslint-disable no-new */
