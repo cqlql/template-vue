@@ -70,16 +70,16 @@ export default {
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 8PX;
-  height: 34PX;
-  margin-left: -25PX;
-  margin-top: -25PX;
+  padding: 8px;
+  height: 34px;
+  margin-left: -25px;
+  margin-top: -25px;
   background: rgba(0, 0, 0, 0.8);
   z-index: 99;
-  border-radius: 5PX;
+  border-radius: 5px;
 }
 .preloader {
-  width: 34PX;
-  height: 34PX;
+  width: 34px;
+  height: 34px;
 }
 </style>
