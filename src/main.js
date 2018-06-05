@@ -25,12 +25,12 @@ Vue.prototype.bus = new Vue({
 })
 
 router.beforeEach((to, from, next) => {
-  $loading.show()
+  loading.show()
   document.title = to.meta.title || ''
   next()
 })
 router.afterEach(() => {
-  $loading.hide()
+  loading.hide()
 })
 
 /* eslint-disable no-new */
