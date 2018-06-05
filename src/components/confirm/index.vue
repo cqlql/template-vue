@@ -51,14 +51,12 @@ export default {
 }
 </script>
 
+
 <style scoped>
-.mask {
-  z-index: 99;
-}
 .confirm {
-  width: 320PX;
-  border-radius: 5PX;
-  font-size: 18PX;
+  width: 320px;
+  border-radius: 5px;
+  font-size: 18px;
 
   position: fixed;
   display: table;
@@ -72,17 +70,17 @@ export default {
   text-align: center;
 }
 .des {
-  line-height: 30PX;
-  padding: 38PX 50PX 32PX;
+  line-height: 30px;
+  padding: 38px 50px 32px;
 }
 .btns {
-  border-top: 1PX solid #ccc;
+  border-top: 1px solid #ccc;
   display: flex;
   width: 100%;
 }
 .btn {
   color: #3cc51f;
-  padding: 20PX 0;
+  padding: 20px 0;
   flex: 1;
   text-align: center;
   text-decoration: none;
@@ -95,6 +93,6 @@ export default {
 }
 .btn-ca {
   color: #353535;
-  border-right: 1PX solid #ccc;
+  border-right: 1px solid #ccc;
 }
 </style>

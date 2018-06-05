@@ -8,17 +8,17 @@ import App from './App.vue'
 
 // import click from '@/modules/corejs/dom/click.vue'
 // import axios from '@/modules/ajax-mid'
-import loading from '@/components/loading/plugin'
-import toast from '@/components/toast/plugin'
-import confirm from '@/components/confirm/plugin'
+import Loading from '@/components/loading/plugin'
+import Toast from '@/components/toast/plugin'
+import Confirm from '@/components/confirm/plugin'
 // import '@/modules/zoom-touch/picture-zoom-popup-init' // 放大看图初始
 
-Vue.use(loading)
-Vue.use(toast)
-Vue.use(confirm)
+Vue.use(Loading)
+Vue.use(Toast)
+Vue.use(Confirm)
 // Vue.use(click)
 // Vue.prototype.$axios = axios
-const $loading = Vue.loading
+const loading = Vue.loading
 
 Vue.prototype.bus = new Vue({
   data: {}
