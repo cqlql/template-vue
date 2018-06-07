@@ -9,6 +9,7 @@
     "build": "node w.prod.build --ios",
     "build.test": "node w.prod.build --test",
     "test": "karma start test/unit/karma.conf.js",
+    "test-node": "jest test-node/.+[sS]pec\\.js$ --env=node --watch",
     "data-mock": "node ./data-mock/server.run.js"
   },
   "dependencies": {
