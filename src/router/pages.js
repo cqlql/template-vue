@@ -5,14 +5,13 @@ const Index2 = () => import(/* webpackChunkName: "hello" */ '@/views/hello2/Inde
 export default [
   {
     path: '/hello',
-    name: 'HelloIndex',
+    name: 'hello',
     meta: {title: 'HelloIndex'},
     component: Index
   },
   {
     path: '/hello2',
-    alias: ['/helloIndex2'],
-    name: 'HelloIndex2',
+    name: 'hello2',
     meta: {title: 'HelloIndex2'},
     component: Index2
   }

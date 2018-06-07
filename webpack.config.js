@@ -2,7 +2,13 @@ const webpackConfig = require('./build/webpack.dev')(__dirname)
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 webpackConfig.plugins.push(
   new HtmlWebpackPlugin({
-    filename: './HelloIndex2.html',
+    filename: './hello.html',
+    template: './src/index.html',
+  })
+)
+webpackConfig.plugins.push(
+  new HtmlWebpackPlugin({
+    filename: './hello2.html',
     template: './src/index.html',
   })
 )

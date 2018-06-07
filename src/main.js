@@ -5,12 +5,6 @@ import '@/comm.css'
 import Vue from 'vue'
 import router from './router'
 import App from './app.vue'
-import goPage from '@/modules/go-page'
-
-// import('@/comm2.css')
-
-// import click from '@/modules/corejs/dom/click.vue'
-// import axios from '@/modules/ajax-mid'
 import Loading from '@/components/loading/plugin'
 import Toast from '@/components/toast/plugin'
 import Confirm from '@/components/confirm/plugin'
@@ -19,13 +13,11 @@ import Confirm from '@/components/confirm/plugin'
 Vue.use(Loading)
 Vue.use(Toast)
 Vue.use(Confirm)
-// Vue.use(click)
-// Vue.prototype.$axios = axios
 const loading = Vue.loading
 
-Vue.prototype.bus = new Vue({
-  data: {}
-})
+// Vue.prototype.bus = new Vue({
+//   data: {}
+// })
 
 router.beforeEach((to, from, next) => {
   loading.show()
@@ -46,10 +38,3 @@ new Vue({
     App
   }
 })
-
-// router.push({name: 'ConferenceCreate'})
-// import('@/modules/popup/debug-msg').then(({default: debug}) => {
-//   debug(navigator.userAgent)
-// })
-
-goPage(router)
