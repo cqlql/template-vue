@@ -85,10 +85,10 @@ module.exports = function (dirname) {
     output: {
       path: resolve('./dist'),
 
-      filename: 'js/[name].[chunkhash:7].js',
-      chunkFilename: 'js/[name].bundle.[chunkhash:7].js',
-      // filename: 'js/[name].js?_=[chunkhash:7]',
-      // chunkFilename: 'js/[name].bundle.js?_=[chunkhash:7]',
+      // filename: 'js/[name].[chunkhash:7].js',
+      // chunkFilename: 'js/[name].bundle.[chunkhash:7].js',
+      filename: 'js/[name].js?_=[chunkhash:7]',
+      chunkFilename: 'js/[name].bundle.js?_=[chunkhash:7]',
     },
     module: {
       //加载器配置
