@@ -16,8 +16,21 @@ if (process.env.NODE_ENV === 'production') {
   importAll(require.context('./router', false, /\.js$/))
 } else {
   // 开发环境
-  importAll(require.context('./router', false, /\.js$/))
+  importAll(require.context('./', true, /^\.\/router\/.+?\.js$|^\.\/nav-dev.js$/))
+  // importAll(require.context('./', true, /^\.\/nav-dev.js$/))
 }
+
+// 404
+Router.push(
+  {
+    path: '*',
+    name: '404',
+    meta: { title: '404', zIndex: 99 },
+    component: {
+      template: `<div style="height:200px;font-size:30px;display:flex;align-items:center;justify-content: center;">404：没有这个页面(⊙﹏⊙)</div>`
+    }
+  }
+)
 
 Vue.use(Router)
 
