@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // 404
-Router.push(
+routes.push(
   {
     path: '*',
     name: '404',
