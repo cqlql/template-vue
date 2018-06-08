@@ -1,7 +1,8 @@
 <template>
   <div class="c1">
     <div class="logo"></div>
-    <div :class="$style.mTest">hello word</div>
+    <div :class="$style.mTest">hello word, {{helloState.d}}</div>
+    <button @click="onChangeOtherState">改变额外的状态</button>
   </div>
 </template>
 
@@ -11,7 +12,17 @@
 // 异步 css，其实就是异步 js，如果拆分 css，会多出一个空 js 异步包
 // import('./index.css')
 
+import helloState from './hello-state'
+
 export default {
+  created () {
+    this.helloState = helloState
+  },
+  methods: {
+    onChangeOtherState () {
+      helloState.d = helloState.d === 'bar' ? 'foo' : 'bar'
+    }
+  }
 }
 </script>
 
@@ -20,7 +31,6 @@ export default {
   color: rgb(46, 146, 0);
 }
 </style>
-
 
 <style scoped>
 .logo {
