@@ -22,7 +22,7 @@ function importAll (r) {
 importAll(require.context('./router', false, /(hello|hello2)\.js$/))
 
 // 404
-Router.push(
+routes.push(
   {
     path: '*',
     name: '404',

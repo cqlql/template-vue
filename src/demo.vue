@@ -32,6 +32,5 @@ export default {
   right: 0;
   left: 300px;
   border: 3px solid #ddd;
-
 }
 </style>
