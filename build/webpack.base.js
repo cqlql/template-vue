@@ -1,5 +1,4 @@
 const path = require('path')
-const utils = require('./utils')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
   VueLoaderPlugin
