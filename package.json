@@ -17,7 +17,7 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "^8.6.1",
+    "autoprefixer": "^8.6.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -64,7 +64,7 @@
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.12.0",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.3",
+    "webpack-cli": "^3.0.4",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.2"
   }
