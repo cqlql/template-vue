@@ -1,6 +1,6 @@
 {
   "name": "webpack-template-vue",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "",
   "author": "陈桥黎",
   "private": true,
@@ -34,7 +34,6 @@
     "eslint-config-standard": "^11.0.0",
     "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-html": "^4.0.3",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
