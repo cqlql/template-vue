@@ -1,4 +1,5 @@
 const webpackConfig = require('./build/webpack.dev')(__dirname)
+
 webpackConfig.entry.main = ['@/components/debug-msg/w.js'].concat(webpackConfig.entry.main)
 
 // proxy 文档：https://github.com/chimurai/http-proxy-middleware
