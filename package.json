@@ -9,7 +9,7 @@
     "build": "node w.prod.build --ios",
     "build.test": "node w.prod.build --test",
     "test": "karma start test/unit/karma.conf.js",
-    "test-node": "jest spec/.+[sS]pec\\.js$ --env=node --watch",
+    "test-node": "jest spec/.+[sS]pec\\.js$ --watch -c=test-node/jest.config.js",
     "data-mock": "node ./data-mock/server.run.js"
   },
   "dependencies": {
@@ -66,8 +66,5 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.3"
-  },
-  "jest": {
-    "transform": {}
   }
 }
