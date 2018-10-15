@@ -1,8 +1,15 @@
-<template>
-  <div class="h2">
-      hello world2
-  </div>
-</template>
+
+<script>
+export default {
+  render () {
+    return (
+      <div class="h2">
+          hello world2
+      </div>
+    )
+  }
+}
+</script>
 
 <style scoped>
 

@@ -5,7 +5,7 @@ export default [
   {
     path: '/hello',
     name: 'HelloIndex',
-    meta: {title: 'HelloIndex'},
+    meta: { title: 'HelloIndex' },
     component: Index
   }
 ]

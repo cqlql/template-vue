@@ -14,7 +14,7 @@ export default [
   {
     path: '/',
     name: 'navDev',
-    meta: {title: '快捷导航-dev'},
+    meta: { title: '快捷导航-dev' },
     component: {
       render (h) {
         const h2Style = { padding: '20px 6px 0', 'font-size': '16px' }

@@ -11,7 +11,7 @@
 <script>
 import TreeView from './TreeView.vue'
 export default {
-  components: {TreeView},
+  components: { TreeView },
   data () {
     return {
       isShow: false,
