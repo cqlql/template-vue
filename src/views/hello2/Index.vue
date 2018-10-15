@@ -7,6 +7,11 @@ export default {
           hello world2
       </div>
     )
+  },
+  created () {
+    import('./dynamic-imports').then(d => {
+      console.log('dynamic-imports 测试成功', d)
+    })
   }
 }
 </script>
