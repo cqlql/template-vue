@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "cd demo-run&vue-cli-service serve"
   },
   "dependencies": {
     "vue": "^2.5.17",
@@ -30,6 +31,10 @@
       "plugin:vue/essential",
       "@vue/standard"
     ],
+    "globals": {
+      "Vue": true,
+      "VueRouter": true
+    },
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
