@@ -10,26 +10,24 @@
     </ul>
 
     <div class="right">
-      <div ref="box"></div>
+      <div ref="box" id="box"></div>
     </div>
 
   </div>
 </template>
 
 <script>
-import Pages from '@/main.js'
+import pages from '@/main.js'
 
 export default {
   name: 'demo',
   mounted () {
-    let vm = this
-    Pages(this.$refs.box, function (pages) {
-      vm.pages = pages
-    })
+    // window.pages = pages
+    pages.bind(this.$refs.box)
   },
   methods: {
     open (name) {
-      this.pages.open(name)
+      pages.open(name)
     }
   }
 }
