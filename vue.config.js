@@ -7,7 +7,7 @@ module.exports = {
       config.output.library = 'Pages'
     } else {
       // 为开发环境修改配置...
-      console.log(config.resolve)
+      // console.log(config.resolve)
     }
   }
 }
