@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LoadIco from '@/components/load-ico'
+import LoadIco from './ico'
 import VMask from '@/components/base/VMask'
 export default {
   data () {
