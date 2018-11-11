@@ -12,10 +12,16 @@ const getWebpackConfig = require('./build/webpack.prod')
 const argv = require('yargs').argv
 const isTest = argv['test'] === true // 有时候可能需要测试编译结果
 
+// 打包输出路径设置：
+let outputPath = path.resolve(__dirname, './dist')
+if (isTest) {
+
+}
+
 const webpackConfig = getWebpackConfig({
   dirname: __dirname,
   // css 拆分
-  splitCss: true,
+  splitCss: false,
   // 更改环境变量
   // env () {
   //   return new webpack.DefinePlugin({
@@ -31,7 +37,7 @@ const webpackConfig = getWebpackConfig({
       filename: './index.html',
       template: './src/index.html',
       // chunks: ['main'],
-      inlineSource: /main\.js/,
+      // inlineSource: /main\.js/, // js 是否包含到页面中
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -46,11 +52,7 @@ const webpackConfig = getWebpackConfig({
   }
 })
 
-// 打包输出路径设置：
-let outputPath = path.resolve(__dirname, './dist')
-if (isTest) {
 
-}
 
 const prodConfig = {
   // 不打包的模块
@@ -60,7 +62,11 @@ const prodConfig = {
     // 'vue-router': 'VueRouter'
   },
   output: {
-    path: outputPath
+    path: outputPath,
+
+    library: 'pages',
+    libraryTarget: 'window',
+    libraryExport: 'default',
   },
   plugins: [
     // 转 .net 的 cshtml 模板
@@ -88,7 +94,7 @@ const prodConfig = {
     // ]),
     // 添加指定的 cdn 包。或者指定路径的包也行
     new ScriptPlugin([
-      'http://p2y63v1s4.bkt.clouddn.com/vue/2.5.13/vue.min.js',
+      // 'http://p2y63v1s4.bkt.clouddn.com/vue/2.5.13/vue.min.js',
       // 配合 copy-webpack-plugin 使用
       // 'js/vue-router.min.js',
     ])
