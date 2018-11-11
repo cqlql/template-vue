@@ -149,7 +149,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
       ],
       extensions: ['.js', '.vue'],
       alias: {
-        'vue$': 'vue/dist/vue.esm.js',
+        // 'vue$': 'vue/dist/vue.esm.js',
         '@': _resolve('src'),
       }
     }
