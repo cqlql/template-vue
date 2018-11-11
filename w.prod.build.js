@@ -55,6 +55,9 @@ const webpackConfig = getWebpackConfig({
 
 
 const prodConfig = {
+  entry: {
+    pages: webpackConfig.entry.main
+  }, // 更改 js 包文件名
   // 不打包的模块
   // 键为 import 调用名，值为全局名称
   externals: {
