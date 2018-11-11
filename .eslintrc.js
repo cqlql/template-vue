@@ -19,6 +19,10 @@ module.exports = {
   plugins: [
     'vue'
   ],
+  globals: {
+    Vue: true,
+    VueRouter: true
+  },
   // add your custom rules here
   rules: {
     // allow async-await

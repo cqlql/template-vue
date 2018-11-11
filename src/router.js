@@ -1,40 +1,26 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+// import Vue from 'vue'
+// import Router from 'vue-router'
+import Home from './views/Home.vue'
 
-// 批量导入路由
-let routes = []
-function importAll (r) {
-  r.keys().forEach(key => {
-    routes = routes.concat(r(key).default)
+export default function () {
+  Vue.use(VueRouter)
+  return new VueRouter({
+    // mode: 'history',
+    // base: process.env.BASE_URL,
+    routes: [
+      {
+        path: '/',
+        name: 'home',
+        component: Home
+      },
+      {
+        path: '/about',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      }
+    ]
   })
 }
-
-// // 指定只打包具体 router
-// if (process.env.NODE_ENV === 'production') {
-//   // 正式环境
-//   importAll(require.context('./router', false, /(hello|hello2)\.js$/))
-// } else {
-//   // 开发环境
-//   importAll(require.context('./', true, /^\.\/router\/.+?\.js$|^\.\/nav-dev.js$/))
-//   // importAll(require.context('./', true, /^\.\/nav-dev.js$/))
-// }
-
-importAll(require.context('./router', false, /(hello|hello2)\.js$/))
-
-// 404
-routes.push(
-  {
-    path: '*',
-    name: '404',
-    meta: { title: '404', zIndex: 99 },
-    component: {
-      template: `<div style="height:200px;font-size:30px;display:flex;align-items:center;justify-content: center;">404：没有这个页面(⊙﹏⊙)</div>`
-    }
-  }
-)
-
-Vue.use(Router)
-
-export default new Router({
-  routes: routes
-})

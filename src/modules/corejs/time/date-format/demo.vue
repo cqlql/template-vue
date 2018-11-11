@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import formatDate from './format-date'
+  import formatDate from './date-format'
   export default {
     data () {
       return {

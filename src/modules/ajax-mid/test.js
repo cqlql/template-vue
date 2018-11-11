@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
   token = JSON.parse(`
 
 
-  {"code":0,"message":"ok","result":{"token":"2d106af9-e257-40af-804c-bcac723eaad8","uid":"492635","username":"毕晓东","role":2}}
+  {"code":0,"message":"ok","result":{"token":"4a803edf-8752-4c38-aad9-e12a228614c3","uid":"466877","username":"校领导","role":2}}
 
 
   `).result.token
@@ -33,8 +33,17 @@ let axiosTest = {
       config = config || {}
       config.headers = {'X-Sd-token': token}
     }
+    // console.log(server + url)
     return axios.post(server + url, data, config)
+  },
+  delete (url, config) {
+    if (process.env.NODE_ENV !== 'production') {
+      config = config || {}
+      config.headers = {'X-Sd-token': token}
+    }
+    return axios.delete(server + url, config)
   }
+
   // getToken () {
   //   return axios.post(tokenServer, {
   //     'campus_id': '5255421148254165520',
