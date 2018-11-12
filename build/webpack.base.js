@@ -20,7 +20,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
   }
 
   function getCssLoaders () {
-    return [
+    let options = [
       {
         resourceQuery: /module/,
         use: [
@@ -33,8 +33,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
               modules: true,
               localIdentName: '[local]_[hash:base64:5]'
             }
-          },
-          'postcss-loader?sourceMap=true'
+          }
         ]
       },
       {
@@ -47,10 +46,15 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
               alias: cssAlias
             }
           },
-          'postcss-loader?sourceMap=true'
         ]
       }
     ]
+    options.forEach(op => {
+      op.use.push('postcss-loader?sourceMap=true')
+      // op.use.push('sass-loader?sourceMap=true') // 增加 sass 支持，还需安装 sass-loader 、 node-sass
+    })
+
+    return options
   }
 
   let conf = {
