@@ -5,8 +5,7 @@ module.exports = {
       "targets": {
         "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
       }
-    },
-    "@babel/preset-stage-2"]
+    }]
   ],
   "plugins": [
     "@babel/plugin-transform-runtime",
