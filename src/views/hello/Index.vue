@@ -15,6 +15,10 @@
 
 import helloState from './hello-state'
 
+// 测试 class
+class A {}
+console.log(new A())
+
 var readFile = function (fileName) {
   return new Promise(function (resolve, reject) {
     // 此处会立即执行(同步执行)
