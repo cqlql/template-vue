@@ -33,22 +33,27 @@ const webpackConfig = getWebpackConfig({
   // },
   // 更改入口 index template
   indexTemplate () {
-    return new HtmlWebpackPlugin({
-      filename: './index.html',
-      template: './src/index.html',
-      // chunks: ['main'],
-      // inlineSource: /main\.js/, // js 是否包含到页面中
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        // 内嵌 css js 压缩, 结合 HtmlWebpackInlineSourcePlugin 可能会压缩2次，非必要还是不要设了
-        // minifyCSS: true,
-        // minifyJS: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      }
-    })
+    // 去掉 index template
+    function Empty () {}
+    Empty.prototype.apply = function () {}
+    return new Empty()
+
+    // return new HtmlWebpackPlugin({
+    //   filename: './index.html',
+    //   template: './src/index.html',
+    //   // chunks: ['main'],
+    //   // inlineSource: /main\.js/, // js 是否包含到页面中
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeAttributeQuotes: true,
+    //     // 内嵌 css js 压缩, 结合 HtmlWebpackInlineSourcePlugin 可能会压缩2次，非必要还是不要设了
+    //     // minifyCSS: true,
+    //     // minifyJS: true
+    //     // more options:
+    //     // https://github.com/kangax/html-minifier#options-quick-reference
+    //   }
+    // })
   }
 })
 
