@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --progress --config w.dev.conf.js",
-    "build": "node w.prod.build --ios",
+    "build": "node w.prod.build",
     "build.test": "node w.prod.build --test",
     "test": "karma start test/unit/karma.conf.js",
     "test-node": "jest spec/.+[sS]pec\\.js$ --watch -c=test-node/jest.config.js",
