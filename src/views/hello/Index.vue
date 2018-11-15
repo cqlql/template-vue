@@ -63,7 +63,7 @@ export default {
 
 <style scoped>
 .logo {
-  background: url('@/assets-comm/logo.png')
+  background: url('@/assets/logo.png')
 }
 .c1 {
   color: blue;

@@ -15,10 +15,6 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
     return path.resolve(dirname, p)
   }
 
-  const cssAlias = {
-    "./@": _resolve('src')
-  }
-
   function getCssLoaders () {
     let options = [
       {
@@ -29,7 +25,6 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
             loader: 'css-loader',
             options: {
               sourceMap: devMode,
-              alias: cssAlias,
               modules: true,
               localIdentName: '[local]_[hash:base64:5]'
             }
@@ -42,8 +37,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
           {
             loader: 'css-loader',
             options: {
-              sourceMap: devMode,
-              alias: cssAlias
+              sourceMap: devMode
             }
           },
         ]
@@ -154,6 +148,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
       extensions: ['.js', '.vue'],
       alias: {
         // 'vue$': 'vue/dist/vue.esm.js',
+        './@': _resolve('src'), // css url 别名
         '@': _resolve('src'),
       }
     }
