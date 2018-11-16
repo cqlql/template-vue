@@ -1,8 +1,8 @@
 <template>
   <div>
-    <VTransition :name="slideName" :activeClass="activeClass">
+    <transition :name="slideName" :enter-active-class="'enter '+activeClass" :leave-active-class="activeClass">
       <router-view></router-view>
-    </VTransition>
+    </transition>
   </div>
 </template>
 
@@ -43,14 +43,26 @@ export default {
 </script>
 
 <style scoped>
-  .slide-active{
-    transition: 0.3s cubic-bezier(.55,0,.1,1);
-    transition-property:opacity,transform;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    bottom: 0;
-  }
-
+.slide-active {
+  transition: 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  transition-property: opacity, transform;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+}
+.enter {
+  position: fixed;
+}
+.slide-left-enter,
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translate3d(30px, 0, 0);
+}
+.slide-left-leave-to,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+}
 </style>
