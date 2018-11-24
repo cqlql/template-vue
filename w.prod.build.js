@@ -58,11 +58,9 @@ const webpackConfig = getWebpackConfig({
 })
 
 
-
+delete webpackConfig.entry.main // 删掉默认入口
 const prodConfig = {
-  entry: {
-    pages: webpackConfig.entry.main
-  }, // 更改 js 包文件名
+  entry: { pages: './src/main.js' }, // 更改 js 包文件名
   // 不打包的模块
   // 键为 import 调用名，值为全局名称
   externals: {
@@ -111,5 +109,7 @@ const prodConfig = {
     isTest ? [(new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)())] : []
   )
 }
+
+
 
 webpack(merge(webpackConfig, prodConfig), require('./build/msg-webpack'))
