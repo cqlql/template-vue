@@ -39,13 +39,17 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
             options: {
               sourceMap: devMode
             }
-          },
+          }
         ]
       }
     ]
     options.forEach(op => {
       op.use.push('postcss-loader?sourceMap=true')
-      // op.use.push('sass-loader?sourceMap=true') // 增加 sass 支持，还需安装 sass-loader 、 node-sass
+      if (!op.resourceQuery) {
+        op.use.push('less-loader?sourceMap=true') // 增加 less 支持，还需安装 less-loader
+        // op.use.push('sass-loader?sourceMap=true') // 增加 sass 支持，还需安装 sass-loader 、 node-sass
+      }
+
     })
 
     return options
@@ -86,8 +90,8 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
         // exclude: ['node_modules'],
       },
       cssLoaderHandle({
-        test: /\.css$/,
-        // test: /\.(css|scss)$/,
+        // test: /\.css$/,
+        test: /\.(css|less|scss)$/,
 
         // 一起处理
         // oneOf: getCssLoaders()

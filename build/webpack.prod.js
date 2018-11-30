@@ -6,12 +6,17 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const getBaseConf = require('./webpack.base')
 const merge = require('webpack-merge')
 
-module.exports = function ({ dirname, splitCss = false, env = d => d, indexTemplate }) {
+module.exports = function ({
+  dirname,
+  splitCss = false,
+  env = d => d,
+  indexTemplate
+}) {
   process.env.NODE_ENV = 'production'
 
   let baseConf = getBaseConf({
     dirname,
-    cssLoaderHandle (cssLoader) {
+    cssLoaderHandle(cssLoader) {
       if (splitCss) {
         // 拆分一般 css
         cssLoader.oneOf[1].oneOf[0].use[0] = MiniCssExtractPlugin.loader
@@ -88,41 +93,78 @@ module.exports = function ({ dirname, splitCss = false, env = d => d, indexTempl
       alias: {
         'vue$': 'vue/dist/vue.min.js'
       }
+    },
+
+    // 代码拆分
+    optimization: {
+      splitChunks: {
+        // 此处的设置会影响 main.js
+        // 如果 cacheGroups 没设置，也会影响
+
+        // chunks: 'async',
+        // minSize: 51200,
+        // maxSize: 256000, // 如果main.js 满足条件，将会拆分成多个
+        // minChunks: 1,
+        // maxAsyncRequests: 5,
+        // maxInitialRequests: 3,
+        // automaticNameDelimiter: '~',
+        // name: true,
+
+        cacheGroups: {
+          vux: {
+            name: `vux.vendor`,
+            test: /[\\/]node_modules[\\/]vux/,
+            minSize: 64 * 1024,
+            // maxSize: 256 * 1024,
+            priority: -10,
+            chunks: 'initial',
+            reuseExistingChunk: true
+          },
+          // common: {
+          //   name: `chunk-common`,
+          //   minChunks: 2,
+          //   priority: -20,
+          //   chunks: 'initial',
+          //   reuseExistingChunk: true
+          // }
+        }
+      }
     }
   }
 
   // css 拆分
   if (splitCss) {
-    // css 拆分到一个文件。将所有css，包括异步包中的css，全部打包到一个文件
-    // 问题1：
-    // 无法处理 vue 单文件中的 style css。(注：会处理 vue 单文件中直接 `import 's.css'` 的 css)
-    // 解决：目前没有好的办法，可以 vue 单独处理不拆分
-    // 问题2：会多出一个空的 styles.bundle.js
-    // 解决：与入口 mian 同名
-    conf.optimization = {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'main',
-            test: /\.css$/,
-            chunks: 'all',
-            enforce: true
+    conf = merge(conf, {
+      // css 拆分到一个文件。将所有css，包括异步包中的css，全部打包到一个文件
+      // 问题1：
+      // 无法处理 vue 单文件中的 style css。(注：会处理 vue 单文件中直接 `import 's.css'` 的 css)
+      // 解决：目前没有好的办法，可以 vue 单独处理不拆分
+      // 问题2：会多出一个空的 styles.bundle.js
+      // 解决：与入口 mian 同名
+      optimization: {
+        splitChunks: {
+          cacheGroups: {
+            styles: {
+              name: 'main',
+              test: /\.css$/,
+              chunks: 'all',
+              enforce: true
+            }
           }
         }
-      }
-    }
-
-    conf.plugins.unshift(
-      new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // both options are optional
-        filename: '[name].css',
-        // filename: '[name].[hash].css',
-        // chunkFilename: '[id].[hash].css',
-        // filename: '[name].css?_=[chunkhash:7]',
-        // chunkFilename: '[id].css?_=[chunkhash:7]',
-      }),
-    )
+      },
+      plugins: [
+        new MiniCssExtractPlugin({
+          // Options similar to the same options in webpackOptions.output
+          // both options are optional
+          filename: '[name].css',
+          // filename: '[name].[hash].css',
+          // chunkFilename: '[id].[hash].css',
+          // filename: '[name].css?_=[chunkhash:7]',
+          // chunkFilename: '[id].css?_=[chunkhash:7]',
+        }),
+      ]
+    })
   }
 
   return merge(baseConf, conf)

@@ -15,6 +15,7 @@ module.exports = {
       remove: false
     }),
     require('postcss-nested'),
+    // require('postcss-import'), // 允许 css 中使用 @import 导入合并其他css
   ].concat(process.env.NODE_ENV === 'production'? [
     // require('postcss-pxtorem')({
     //   // replace: process.env.NODE_ENV === 'production', // 默认 true
@@ -45,7 +46,7 @@ module.exports = {
     }),
 
     // 允许 css 中使用 @import 导入合并其他css
-    require('postcss-smart-import')({
+    require('postcss-import')({
       // 查找目录
       path: ['E:/_work/mobile_webview/smallpitch.webview/src/modules/base-libs/css']
     }),
