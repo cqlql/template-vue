@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition :name="slideName" :enter-active-class="'enter '+activeClass" :leave-active-class="activeClass">
+    <transition :name="slideName" :enter-active-class="'leave '+activeClass" :leave-active-class="activeClass">
       <router-view></router-view>
     </transition>
   </div>
@@ -46,14 +46,14 @@ export default {
 .slide-active {
   transition: 0.3s cubic-bezier(0.55, 0, 0.1, 1);
   transition-property: opacity, transform;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  bottom: 0;
+  min-height: 100%;
 }
-.enter {
-  position: fixed;
+.leave {
+  position: static;
 }
 .slide-left-enter,
 .slide-right-leave-to {
