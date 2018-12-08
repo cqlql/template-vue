@@ -133,13 +133,13 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
           // chunks: ['main'] // 默认所有入口
         })
       ),
-      new VueLoaderPlugin()
+      new VueLoaderPlugin(),
       // copy custom static assets
       // 在开启 devServer 情况，将 copy 到内存中
       // new CopyWebpackPlugin([
       //   {
-      //     from: path.resolve(dirname, 'static'),
-      //     to: path.resolve(dirname, 'dist/static'),
+      //     from: _resolve('static'),
+      //     to: _resolve('dist/static'),
       //     ignore: ['.*'] // 排除
       //   }
       // ])
