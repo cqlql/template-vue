@@ -46,7 +46,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
     options.forEach(op => {
       op.use.push('postcss-loader?sourceMap=true')
       if (!op.resourceQuery) {
-        op.use.push('less-loader?sourceMap=true') // 增加 less 支持，还需安装 less-loader
+        // op.use.push('less-loader?sourceMap=true') // 增加 less 支持，还需安装 less-loader
         // op.use.push('sass-loader?sourceMap=true') // 增加 sass 支持，还需安装 sass-loader 、 node-sass
       }
 
