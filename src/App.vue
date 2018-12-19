@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import VTransition from '@/components/v-transition'
 export default {
   data () {
     return {
@@ -35,9 +34,6 @@ export default {
         this.slideName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
       }
     }
-  },
-  components: {
-    VTransition
   }
 }
 </script>
