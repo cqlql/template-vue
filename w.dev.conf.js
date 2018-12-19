@@ -21,7 +21,7 @@ webpackConfig.devServer.proxy = [{
   //   proxyReq.setHeader('Host',`192.168.1.222:3002`)
   //   proxyReq.setHeader('Cookie', `
   //     .ASPXAUTH=47DB; domain=192.168.1.194; expires=Wed, 08-Nov-2017 06:28:56 GMT; path=/; HttpOnly
-  //   `);
+  //   `.trim());
   // },
 
   // 定制响应 headers
