@@ -5,6 +5,7 @@ var multer = require('multer')
 var upload = multer({ dest: 'e:/uploads/' })
 
 router.get('/GetMessage', function (req, res) {
+  console.log(req.headers)
   res.send({
     'status': 200,
     'message': 'ok',

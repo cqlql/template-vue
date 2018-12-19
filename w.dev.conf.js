@@ -10,11 +10,13 @@ webpackConfig.devServer.proxy = [{
     '^/mock': ''
   },
 
+  // 注意以下的自定义无法在浏览器端看到，因为是通过nodejs去请求的，而不是浏览器。所以只能在服务端看到
   // 1 会重写 host。以 target 重写
   changeOrigin: true,
   // 2 也可以自定义 host
   // hostRewrite: 'parent.shendupeiban.com',
-  // 3 也可以通过这种方式设置 host
+  // 3 也可以通过下面这种方式设置 host
+  // 定制请求 headers
   // onProxyReq: function(proxyReq, req, res){
   //   proxyReq.setHeader('Host',`192.168.1.222:3002`)
   //   proxyReq.setHeader('Cookie', `

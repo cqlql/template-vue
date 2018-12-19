@@ -4,6 +4,7 @@
     <div :class="$style.mTest">hello word, {{helloState.d}}</div>
     <button @click="onChangeOtherState">改变额外的状态</button>
     <button @click="asyncReadFile">测试 async 语法</button>
+    <button @click="getMessage">ajax请求</button>
   </div>
 </template>
 
@@ -14,6 +15,7 @@
 // import('./index.css')
 
 import helloState from './hello-state'
+import axios from 'axios'
 
 // 测试 class
 class A {}
@@ -50,6 +52,9 @@ export default {
 
       console.log(f1.toString())
       console.log(f2.toString())
+    },
+    getMessage () {
+      axios.get('/mock/GetMessage')
     }
   }
 }
