@@ -4,13 +4,11 @@ var express = require('express')
 var router = require('./data')
 
 var bodyParser = require('body-parser')
-// var multer = require('multer') // 支持文件上传
 
 var app = express()
 
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-// app.use(multer) // for parsing multipart/form-data
 
 // app.use('/Content', express.static('E:\\_work\\sd.pi\\src\\sd.pi.wxweb\\Content')) // 静态资源
 
