@@ -91,11 +91,14 @@ const prodConfig = {
       'http://p2y63v1s4.bkt.clouddn.com/vue/2.5.13/vue.min.js',
       // 配合 copy-webpack-plugin 使用
       // 'js/vue-router.min.js',
-    ])
-  ].concat(
+    ]),
     // 打包分析
-    isTest ? [(new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)())] : []
-  )
+    new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)({
+      analyzerMode: 'static',
+      reportFilename: '../report.html',
+      openAnalyzer: false // 自动打开
+    })
+  ]
 }
 
 webpack(merge(webpackConfig, prodConfig), require('./build/msg-webpack'))
