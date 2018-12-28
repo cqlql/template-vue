@@ -91,7 +91,7 @@ module.exports = function ({
     ],
     // resolve: {
     //   alias: {
-    //     'vue$': 'vue/dist/vue.min.js' // 目前使用运行时版本(没有模板解析)
+    //     'vue$': 'vue/dist/vue.min.js' // 弃用-目前使用运行时版本(没有模板解析)
     //   }
     // },
 
