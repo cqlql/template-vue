@@ -72,12 +72,10 @@ const prodConfig = {
         // 编译前删除
         // filterRemove(outputPath, /\.(jpg|js|ttf)$/)
         filterRemove(outputPath, /^js$/)
-        // filterRemove(outputPath, /\.(css|map)$/)
       },
       done () {
         // 编译后删除
         // filterRemove(outputPath, /\.(css)$/)
-        // filterRemove(outputPath + '/static', /\.(js|css)$/)
       }
     }),
     // new CopyWebpackPlugin([
@@ -88,7 +86,7 @@ const prodConfig = {
     // ]),
     // 添加指定的 cdn 包。或者指定路径的包也行
     new ScriptPlugin([
-      'http://p2y63v1s4.bkt.clouddn.com/vue/2.5.13/vue.min.js',
+      'http://style.shenduxuetang.com/vue/2.5.21/vue.runtime.min.js',
       // 配合 copy-webpack-plugin 使用
       // 'js/vue-router.min.js',
     ]),
