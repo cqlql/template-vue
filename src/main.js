@@ -22,11 +22,7 @@ Vue.use(Loading)
 Vue.use(Toast)
 Vue.use(Confirm)
 // Vue.use(click)
-const loading = Vue.prototype.loading
-
-Vue.prototype.bus = new Vue({
-  data: {}
-})
+const loading = Vue.prototype.$loading
 
 router.beforeEach((to, from, next) => {
   loading.show()

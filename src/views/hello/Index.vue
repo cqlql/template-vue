@@ -15,7 +15,7 @@
 // import('./index.css')
 
 import helloState from './hello-state'
-import axios from 'axios'
+// import axios from 'axios'
 
 // 测试 class
 class A {}
@@ -54,7 +54,7 @@ export default {
       console.log(f2.toString())
     },
     getMessage () {
-      axios.get('/mock/GetMessage')
+      // axios.get('/mock/GetMessage')
     }
   }
 }

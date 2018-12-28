@@ -10,7 +10,7 @@ function importAll (r) {
 
 importAll(require.context('./router', false, /\.js$/))
 
-export default [
+export default routes.concat([
   {
     path: '/',
     name: 'navDev',
@@ -35,4 +35,4 @@ export default [
       }
     }
   }
-]
+])
