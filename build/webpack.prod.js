@@ -89,11 +89,11 @@ module.exports = function ({
       // 减少打包的闭包嵌套？？ // 目前 production 模式默认
       // new webpack.optimize.ModuleConcatenationPlugin(),
     ],
-    resolve: {
-      alias: {
-        'vue$': 'vue/dist/vue.min.js'
-      }
-    },
+    // resolve: {
+    //   alias: {
+    //     'vue$': 'vue/dist/vue.min.js' // 目前使用运行时版本(没有模板解析)
+    //   }
+    // },
 
     // 代码拆分
     optimization: {
