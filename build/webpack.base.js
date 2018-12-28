@@ -76,7 +76,6 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
         enforce: 'pre',
         include: [_resolve('src'), resolve('src')],
         options: {
-          fix: true,
           formatter: require('eslint-friendly-formatter')
         }
       },
