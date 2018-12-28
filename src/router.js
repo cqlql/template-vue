@@ -27,7 +27,9 @@ routes.push(
     name: '404',
     meta: { title: '404', zIndex: 99 },
     component: {
-      template: `<div style="height:200px;font-size:30px;display:flex;align-items:center;justify-content: center;">404：没有这个页面(⊙﹏⊙)</div>`
+      render () {
+        return <div style="height:200px;font-size:30px;display:flex;align-items:center;justify-content: center;">404：没有这个页面(⊙﹏⊙)</div>
+      }
     }
   }
 )
