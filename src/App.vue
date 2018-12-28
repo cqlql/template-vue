@@ -1,8 +1,12 @@
 <template>
   <div>
-    <transition :name="slideName" :enter-active-class="'leave '+activeClass" :leave-active-class="activeClass">
-      <router-view></router-view>
-    </transition>
+    <Transition
+      :name="slideName"
+      :enter-active-class="'leave '+activeClass"
+      :leave-active-class="activeClass"
+    >
+      <RouterView />
+    </Transition>
   </div>
 </template>
 
