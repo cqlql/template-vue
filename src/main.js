@@ -1,5 +1,5 @@
 import '@/comm.css'
-// import '@/comm.css?module'
+// import '@/comm.css?module' // 支持直接 module 导入
 
 // import '@/modules/corejs/em-auto'
 import Vue from 'vue'
@@ -13,12 +13,16 @@ import Toast from '@/components/toast/plugin'
 import Confirm from '@/components/confirm/plugin'
 // import '@/modules/zoom-touch/picture-zoom-popup-init' // 放大看图初始
 
+if (process.env.NODE_ENV !== 'production') { // 开发环境
+  // 调试的简易方案。用来调试一些没有控制台调试的手机
+  // require('@/components/debug-msg/w.js')
+}
+
 Vue.use(Loading)
 Vue.use(Toast)
 Vue.use(Confirm)
 // Vue.use(click)
-// Vue.prototype.$axios = axios
-const loading = Vue.loading
+const loading = Vue.prototype.loading
 
 Vue.prototype.bus = new Vue({
   data: {}
@@ -39,8 +43,3 @@ new Vue({
   router,
   render: h => h(App)
 })
-
-// router.push({name: 'ConferenceCreate'})
-// import('@/modules/popup/debug-msg').then(({default: debug}) => {
-//   debug(navigator.userAgent)
-// })
