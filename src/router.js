@@ -15,8 +15,9 @@ if (process.env.NODE_ENV === 'production') {
   importAll(require.context('./router', false, /(hello|hello2)\.js$/))
 } else {
   // 开发环境
-  importAll(require.context('./', true, /^\.\/router\/.+?\.js$|^\.\/nav-dev.js$/))
-  // importAll(require.context('./', true, /^\.\/nav-dev.js$/))
+
+  // 使用 nav-dev.js 中的路由
+  routes = require('./nav-dev.js').default
 }
 
 // 404
