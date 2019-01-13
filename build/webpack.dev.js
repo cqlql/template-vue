@@ -2,21 +2,16 @@
 const path = require('path')
 const webpack = require('webpack')
 const getIPAdress = require('./get-ip-adress')
-const getBaseConf = require('./webpack.base')
-const merge = require('webpack-merge')
 
 module.exports = function (dirname) {
-
-  let baseConf = getBaseConf({dirname})
-
-  baseConf.output.filename = baseConf.output.filename.replace(/chunkhash/, 'hash')
-
   let conf = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     watch: true,
     output: {
       pathinfo: true,
+      filename: 'js/[name].js?_=[hash:7]',
+      chunkFilename: 'js/[name].bundle.js?_=[hash:7]',
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(), // 启用 hot
@@ -34,5 +29,5 @@ module.exports = function (dirname) {
     }
   }
 
-  return merge(baseConf, conf)
+  return conf
 }
