@@ -19,7 +19,7 @@ module.exports = function (dirname) {
       new webpack.HotModuleReplacementPlugin(), // 启用 hot
     ],
     devServer: {
-      clientLogLevel: 'warning',// 去掉没必要的控制台输出。比如 hot 情况 --progress 浏览器控制台不再显示进度输出
+      clientLogLevel: 'warning', // 去掉没必要的控制台输出。比如 hot 情况 --progress 浏览器控制台不再显示进度输出
       contentBase: path.resolve(dirname, 'dist'),
       compress: true,
       host: getIPAdress(),

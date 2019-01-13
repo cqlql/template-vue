@@ -3,8 +3,6 @@ const webpack = require('webpack')
 module.exports = function ({
   env = d => d,
 }) {
-  process.env.NODE_ENV = 'production'
-
   let conf = {
     mode: 'production',
     plugins: [
