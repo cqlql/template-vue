@@ -14,15 +14,12 @@ module.exports = {
       flexbox: 'no-2009',
       remove: false
     }),
-    require('postcss-zindex'),
     require('postcss-nested'),
     // require('postcss-import'), // 允许 css 中使用 @import 导入合并其他css
     // css 优化，压缩css
-    require('cssnano')(
-      {
-        preset: 'default',
-      }
-    ),
+    require('cssnano')({
+      preset: 'default',
+    }),
   ].concat(process.env.NODE_ENV === 'production'? [
     // require('postcss-pxtorem')({
     //   // replace: process.env.NODE_ENV === 'production', // 默认 true

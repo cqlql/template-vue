@@ -136,7 +136,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate}) 
       // ])
     ].concat(
       function () {
-        if (indexTemplate === undefined) {
+        if (indexTemplate === undefined) { // 默认模板
           return new HtmlWebpackPlugin({
             filename: './index.html',
             template: './src/index.html',

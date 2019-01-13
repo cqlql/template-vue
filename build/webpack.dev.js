@@ -1,7 +1,6 @@
 /* dev 用。因为使用的是默认的 devServer */
 const path = require('path')
 const webpack = require('webpack')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const getIPAdress = require('./get-ip-adress')
 const getBaseConf = require('./webpack.base')
 const merge = require('webpack-merge')
@@ -20,7 +19,6 @@ module.exports = function (dirname) {
       pathinfo: true,
     },
     plugins: [
-      // new ExtractTextPlugin("style.css"),
       new webpack.HotModuleReplacementPlugin(), // 启用 hot
     ],
     devServer: {

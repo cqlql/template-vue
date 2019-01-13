@@ -43,14 +43,17 @@ const webpackConfig = getWebpackConfig({
         // https://github.com/kangax/html-minifier#options-quick-reference
       }
     })
-  }
+  },
+  // externals: {
+  //   'vue': 'Vue'
+  // },
+  // scriptUrls: [
+  //   'http://style.shenduxuetang.com/vue/2.5.21/vue.runtime.min.js',
+  // ]
 })
 
 // 打包输出路径设置：
 let outputPath = path.resolve(__dirname, './dist')
-// if (isTest) {
-
-// }
 
 const prodConfig = {
   // 不打包的模块

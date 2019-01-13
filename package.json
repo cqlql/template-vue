@@ -1,11 +1,11 @@
 {
   "name": "webpack-template-vue",
-  "version": "4",
+  "version": "4.0.0",
   "description": "",
   "author": "陈桥黎",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --progress --config w.dev.conf.js",
+    "start": "webpack-dev-server --progress",
     "build": "node w.prod.build",
     "build.test": "node w.prod.build --test",
     "test": "karma start test/unit/karma.conf.js",
