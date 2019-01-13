@@ -88,7 +88,6 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate}) 
         // exclude: ['node_modules'],
       },
       cssLoaderHandle({
-        // test: /\.css$/,
         test: /\.(css|less|scss)$/,
 
         // 一起处理
