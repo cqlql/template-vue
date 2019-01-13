@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const getIPAdress = require('./get-ip-adress')
 
+// dirname 项目所在目录
 module.exports = function (dirname) {
   let conf = {
     mode: 'development',
