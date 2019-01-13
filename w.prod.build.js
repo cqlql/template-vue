@@ -10,7 +10,7 @@ const getWebpackConfig = require('./build/webpack.prod')
 
 // 命令行参数
 const argv = require('yargs').argv
-const isTest = argv['test'] === true // 有时候可能需要测试编译结果
+// const isTest = argv['test'] === true // 有时候可能需要测试编译结果
 
 const webpackConfig = getWebpackConfig({
   dirname: __dirname,
@@ -48,9 +48,9 @@ const webpackConfig = getWebpackConfig({
 
 // 打包输出路径设置：
 let outputPath = path.resolve(__dirname, './dist')
-if (isTest) {
+// if (isTest) {
 
-}
+// }
 
 const prodConfig = {
   // 不打包的模块

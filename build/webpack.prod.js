@@ -53,12 +53,6 @@ module.exports = function ({
     // devtool: 'source-map',
     // externals: {'vue': 'Vue'},
     plugins: [
-      // 优化 css: http://cssnano.co/。
-      // 会重写 z-index，造成不正确的现象。。。在弄清楚前暂时不用
-      // new OptimizeCssAssetsPlugin({
-      //   safe: true
-      // }),
-
       // 将抽离的 css、js 包含进 html 文件
       new HtmlWebpackInlineSourcePlugin(),
 
@@ -80,14 +74,6 @@ module.exports = function ({
       }),
       // 使用模块路径作为模块id。(物理路径，测试用) // 目前 develoment 模式默认
       // new webpack.NamedModulesPlugin(),
-
-      // ** 以下插件已废弃
-      // 压缩js，目前默认就有
-      // new webpack.optimize.UglifyJsPlugin({
-      //   sourceMap: true // 允许 map
-      // }),
-      // 减少打包的闭包嵌套？？ // 目前 production 模式默认
-      // new webpack.optimize.ModuleConcatenationPlugin(),
     ],
     // resolve: {
     //   alias: {

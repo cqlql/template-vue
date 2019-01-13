@@ -1,11 +1,9 @@
 const path = require('path')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {
-  VueLoaderPlugin
-} = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader')
 
-module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = p => p }) {
+module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate}) {
   const devMode = process.env.NODE_ENV !== 'production'
   // 项目根路径
   function _resolve (p) {
@@ -13,7 +11,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
   }
   // 子项目路径
   function resolve (p) {
-    return path.resolve(dirname, p)
+    return dirname === undefined ? [] : path.resolve(dirname, p)
   }
 
   function getCssLoaders () {
@@ -74,7 +72,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [_resolve('src'), resolve('src')],
+        include: [_resolve('src')].concat(resolve('src')),
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -86,7 +84,7 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [_resolve('src'), resolve('src')],
+        include: [_resolve('src')].concat(resolve('src')),
         // exclude: ['node_modules'],
       },
       cssLoaderHandle({
@@ -126,13 +124,6 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
       ]
     },
     plugins: [
-      indexTemplate(
-        new HtmlWebpackPlugin({
-          filename: './index.html',
-          template: './src/index.html',
-          // chunks: ['main'] // 默认所有入口
-        })
-      ),
       new VueLoaderPlugin(),
       // copy custom static assets
       // 在开启 devServer 情况，将 copy 到内存中
@@ -143,11 +134,23 @@ module.exports = function ({ dirname, cssLoaderHandle = p => p, indexTemplate = 
       //     ignore: ['.*'] // 排除
       //   }
       // ])
-    ],
+    ].concat(
+      function () {
+        if (indexTemplate === undefined) {
+          return new HtmlWebpackPlugin({
+            filename: './index.html',
+            template: './src/index.html',
+            // chunks: ['main'] // 默认所有入口
+          })
+        }
+        let temp = indexTemplate()
+        if (temp === false) return [] // 为 false 则不要模板
+        return temp
+      }()
+    ),
     resolve: {
       modules: [
         'node_modules',
-        // _resolve("../node_modules")
       ],
       extensions: ['.js', '.vue'],
       alias: {
