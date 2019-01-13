@@ -12,6 +12,7 @@ module.exports = function (dirname) {
     output: {
       pathinfo: true,
       filename: 'js/[name].js?_=[hash:7]',
+      // eslint-disable-next-line comma-dangle
       chunkFilename: 'js/[name].bundle.js?_=[hash:7]',
     },
     plugins: [
