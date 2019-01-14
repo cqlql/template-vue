@@ -205,7 +205,8 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false
 
       方案1，不理想：与mian 同名，但不能包含异步vue中的css
       方案2，临时可行：test 中包括 vue 相关css。但会多出一个空的 styles.bundle.js，再把这个空js包含进 template.html 中。
-      看看能不能在事件中排除这个空js？经测试，此js不能删除
+        看看能不能在事件中排除这个空js？经测试，此js不能删除
+        有时间可以写个插件，将小于 200 字节的js包含进 template.html 中
       */
       optimization: {
         splitChunks: {
