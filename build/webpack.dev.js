@@ -8,6 +8,7 @@ module.exports = function (dirname) {
   let conf = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
+    // devtool: 'source-map',
     watch: true,
     output: {
       pathinfo: true,

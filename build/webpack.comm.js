@@ -20,13 +20,13 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
   function getCssLoaders () {
     function getCssLoaderComm ({ css = {} } = {}) {
       return [
-        'vue-style-loader',
-        splitCss ? {
+        splitCss ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+        {
           loader: 'css-loader',
           options: Object.assign({
             sourceMap: devMode
           }, css)
-        } : MiniCssExtractPlugin.loader,
+        },
         'postcss-loader?sourceMap=' + devMode
         // 'less-loader?sourceMap=' + devMode, // 增加 less 支持，还需安装 less-loader
         // 'sass-loader?sourceMap=' + devMode // 增加 sass 支持，还需安装 sass-loader 、 node-sass
@@ -85,7 +85,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
         // exclude: ['node_modules'],
         },
         {
-          test: /\.(css|less|scss)$/,
+          test: /\.(c|le|sc)ss$/,
 
           // 一起处理
           // oneOf: getCssLoaders()

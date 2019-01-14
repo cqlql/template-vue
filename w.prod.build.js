@@ -9,7 +9,7 @@ const merge = require('webpack-merge')
 const getWebpackConfig = require('./build/webpack.prod')
 
 // 命令行参数
-const argv = require('yargs').argv
+// const argv = require('yargs').argv
 // const isTest = argv['test'] === true // 有时候可能需要测试编译结果
 
 process.env.NODE_ENV = 'production'
