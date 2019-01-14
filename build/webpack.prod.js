@@ -1,19 +1,10 @@
+/* eslint comma-dangle: "off" */
 const webpack = require('webpack')
-
-module.exports = function ({
-  env = d => d,
-}) {
+process.env.NODE_ENV = 'production'
+module.exports = function () {
   let conf = {
     mode: 'production',
     plugins: [
-      // 环境变量
-      env(
-        new webpack.DefinePlugin({
-          'process.env': {
-            NODE_ENV: JSON.stringify('production')
-          }
-        })
-      ),
       // 使用模块路径作为模块id。(路径为 hash)
       new webpack.HashedModuleIdsPlugin({
         // hashDigestLength: 7 // 默认 4

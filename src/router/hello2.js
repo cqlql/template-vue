@@ -1,5 +1,5 @@
-// import Index from '@/hello2/Index.vue'
-const Index = () => import(/* webpackChunkName: "hello2" */ '@//views/hello2/Index.vue')
+import Index from '@/views/hello2/Index.vue'
+// const Index = () => import(/* webpackChunkName: "hello2" */ '@/views/hello2/Index.vue')
 
 export default [
   {

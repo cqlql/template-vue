@@ -1,3 +1,4 @@
+/* eslint comma-dangle: "off" */
 /* dev 用。因为使用的是默认的 devServer */
 const path = require('path')
 const webpack = require('webpack')
@@ -13,7 +14,6 @@ module.exports = function (dirname) {
     output: {
       pathinfo: true,
       filename: 'js/[name].js?_=[hash:7]',
-      // eslint-disable-next-line comma-dangle
       chunkFilename: 'js/[name].bundle.js?_=[hash:7]',
     },
     plugins: [

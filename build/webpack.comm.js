@@ -1,3 +1,4 @@
+/* eslint comma-dangle: "off" */
 const path = require('path')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 // const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -6,8 +7,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const merge = require('webpack-merge')
 
-module.exports = function ({ dirname, indexTemplate, splitCss }) {
-  const devMode = process.env.NODE_ENV !== 'production'
+module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false }) {
+  // const devMode = process.env.NODE_ENV !== 'production'
   // 项目根路径
   function _resolve (p) {
     return path.resolve(__dirname, '../', p)
@@ -24,12 +25,12 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
         {
           loader: 'css-loader',
           options: Object.assign({
-            sourceMap: devMode
+            sourceMap
           }, css)
         },
-        'postcss-loader?sourceMap=' + devMode
-        // 'less-loader?sourceMap=' + devMode, // 增加 less 支持，还需安装 less-loader
-        // 'sass-loader?sourceMap=' + devMode // 增加 sass 支持，还需安装 sass-loader 、 node-sass
+        'postcss-loader?sourceMap=' + sourceMap
+        // 'less-loader?sourceMap=' + sourceMap, // 增加 less 支持，还需安装 less-loader
+        // 'sass-loader?sourceMap=' + sourceMap // 增加 sass 支持，还需安装 sass-loader 、 node-sass
       ]
     }
     let options = [
@@ -157,7 +158,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
         // 'vue$': 'vue/dist/vue.min.js' // 弃用-目前使用运行时版本(没有模板解析)
       }
     },
-    // 代码拆分
+    /* // 代码拆分
     optimization: {
       splitChunks: {
         // 此处的设置会影响 main.js
@@ -191,7 +192,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
           // }
         }
       }
-    }
+    } */
   }
   // css 拆分
   if (splitCss) {
@@ -199,20 +200,19 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
       /*
       css 拆分到一个文件。将所有css，包括异步包中的css，全部打包到一个文件
 
-      问题1：无法处理 vue 单文件中的 style css。(注：会处理 vue 单文件中直接 `import 's.css'` 的 css)
-      解决：目前没有好的办法，可以 vue 单独处理不拆分
+      问题1：无法合并异步 vue 单文件中的 style css。难道异步不合并更好？
 
-      问题2：会多出一个空的 styles.bundle.js
+      问题2：同步的 vue 单文件也不以设置的 name 命名
       解决：与入口 mian 同名
       */
       optimization: {
         splitChunks: {
           cacheGroups: {
             styles: {
-              name: 'main',
+              name: 'mian',
               test: /\.css$/,
               chunks: 'all',
-              enforce: true
+              enforce: true,
             }
           }
         }
@@ -221,7 +221,9 @@ module.exports = function ({ dirname, indexTemplate, splitCss }) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: '[name].css'
+          filename: '[name].css',
+          // filename: 'styles.css',
+
           // filename: '[name].[hash].css',
           // chunkFilename: '[id].[hash].css',
           // filename: '[name].css?_=[chunkhash:7]',

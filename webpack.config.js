@@ -45,7 +45,7 @@ const conf = {
     // ]),
     // 添加指定的 cdn 包。或者指定路径的包也行
     new ScriptPlugin([
-      'http://style.shenduxuetang.com/vue/2.5.21/vue.runtime.js',
+      'http://style.shenduxuetang.com/vue/2.5.22/vue.runtime.js',
       // 配合 copy-webpack-plugin 使用
       // 'js/vue-router.min.js',
     ]),
