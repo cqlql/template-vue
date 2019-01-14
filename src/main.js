@@ -39,3 +39,5 @@ new Vue({
   router,
   render: h => h(App)
 })
+
+console.log('测试sourceMap定位，此js被包含进页面中，sourceMap 依然有效')
