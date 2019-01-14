@@ -27,7 +27,8 @@ const commConf = getCommConf({
       filename: './index.html',
       template: './src/index.html',
       // chunks: ['main'], // 指定引入的js包，只有main情况可忽略
-      inlineSource: /main\.js/,
+      // inlineSource: /main\.js/,
+      inlineSource: /styles\.bundle\.js/,
       minify: {
         removeComments: true,
         collapseWhitespace: true,

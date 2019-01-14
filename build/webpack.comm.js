@@ -200,20 +200,30 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false
       /*
       css 拆分到一个文件。将所有css，包括异步包中的css，全部打包到一个文件
 
-      问题1：无法合并异步 vue 单文件中的 style css。难道异步不合并更好？
-
+      问题1：无法合并异步 vue 单文件中的 style css。
       问题2：同步的 vue 单文件也不以设置的 name 命名
-      解决：与入口 mian 同名
+
+      方案1，不理想：与mian 同名，但不能包含异步vue中的css
+      方案2，临时可行：test 中包括 vue 相关css。但会多出一个空的 styles.bundle.js，再把这个空js包含进 template.html 中。看看能不能在事件中排除这个空js？
       */
       optimization: {
         splitChunks: {
           cacheGroups: {
             styles: {
-              name: 'mian',
-              test: /\.css$/,
+              name: 'styles',
+              // test (module) {
+              //   console.log('-------------------------------------')
+              //   console.log(
+              //     module.nameForCondition && module.nameForCondition(),
+              //     module.type, // css/mini-extract
+              //     module.constructor.name
+              //   )
+              // },
+              // test: /\.css$/,
+              test: m => m.constructor.name === 'CssModule', // 能匹配到 vue 中的 style
               chunks: 'all',
               enforce: true,
-            }
+            },
           }
         }
       },
