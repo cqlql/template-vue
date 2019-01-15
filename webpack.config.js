@@ -56,6 +56,8 @@ const conf = {
 module.exports = require('./build/friendly-error')(merge(
   getCommConf({
     // dirname: __dirname, // 如果是根项目则不用传
+
+    // 拆分后使用 devtool: 'cheap-module-eval-source-map' css 将定向错误。需使用 devtool: 'source-map'
     splitCss: true,
   }),
   getDevConf(
