@@ -1,6 +1,5 @@
 
 /* eslint comma-dangle: "off" */
-// const getCommConf = require('./build/webpack.comm')
 const getDevConf = require('./build/webpack.dev')
 const merge = require('webpack-merge')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -57,9 +56,7 @@ module.exports = require('./build/friendly-error')(
   merge(
     getDevConf({
       // dirname: __dirname, // 如果是根项目则不用传
-
-      // 拆分后使用 devtool: 'cheap-module-eval-source-map' css 将定向错误。需使用 devtool: 'source-map'
-      splitCss: true,
+      // splitCss: true,
     }),
     conf
   )

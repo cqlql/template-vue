@@ -10,7 +10,8 @@ const merge = require('webpack-merge')
 module.exports = function (options) {
   let conf = {
     mode: 'development',
-    devtool: 'cheap-module-eval-source-map',
+    // 拆分后需使用 'source-map' css 才能正确定向。需使用 devtool: 'source-map'
+    devtool: options.splitCss ? 'source-map' : 'cheap-module-eval-source-map',
     // devtool: 'source-map',
     watch: true,
     output: {

@@ -1,3 +1,4 @@
+/* eslint comma-dangle: "off" */
 module.exports = {
   plugins: [
     // require('./build/postcss-iconfont')({
@@ -20,7 +21,7 @@ module.exports = {
     require('cssnano')({
       preset: 'default',
     }),
-  ].concat(process.env.NODE_ENV === 'production'? [
+  ].concat(process.env.NODE_ENV === 'production' ? [
     // require('postcss-pxtorem')({
     //   // replace: process.env.NODE_ENV === 'production', // 默认 true
     //   rootValue: 100,
