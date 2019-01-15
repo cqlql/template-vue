@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const getIPAdress = require('./get-ip-adress')
 
 // dirname 项目所在目录
-module.exports = function (dirname) {
+module.exports = function (dirname = path.resolve(__dirname, './')) {
   let conf = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',

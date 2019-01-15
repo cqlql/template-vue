@@ -18,7 +18,7 @@ const getProdConf = require('./build/webpack.prod')
 const sourceMap = true
 
 const commConf = getCommConf({
-  dirname: __dirname,
+  // dirname: __dirname, // 如果是根项目则不用传
   splitCss: true, // css 拆分
   sourceMap, // webpack.comm 中目前只对 css 设置
   // 更改入口 index template

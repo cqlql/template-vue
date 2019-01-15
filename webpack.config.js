@@ -54,9 +54,11 @@ const conf = {
 }
 module.exports = require('./build/friendly-error')(merge(
   getCommConf({
-    dirname: __dirname,
+    // dirname: __dirname, // 如果是根项目则不用传
     splitCss: true,
   }),
-  getDevConf(__dirname),
+  getDevConf(
+    // __dirname // 如果是根项目则不用传
+  ),
   conf
 ))
