@@ -45,17 +45,7 @@ const commConf = getCommConf({
   },
 })
 
-const baseProdConf = getProdConf({
-  // 更改环境变量。此处默认 production
-  // env () {
-  //   return new webpack.DefinePlugin({
-  //     'process.env': {
-  //       NODE_ENV: JSON.stringify('production'),
-  //       APP_TEST: JSON.stringify(isAppTest + '')
-  //     }
-  //   })
-  // },
-})
+const baseProdConf = getProdConf()
 
 // 打包输出路径设置：
 // let outputPath = path.resolve(__dirname, './dist')

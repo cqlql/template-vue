@@ -52,6 +52,7 @@ const conf = {
   ]
 
 }
+// 如果webpack配置有问题，需把 require('./build/friendly-error') 去掉才能看到错误
 module.exports = require('./build/friendly-error')(merge(
   getCommConf({
     // dirname: __dirname, // 如果是根项目则不用传

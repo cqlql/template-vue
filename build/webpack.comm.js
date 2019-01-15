@@ -10,13 +10,9 @@ const merge = require('webpack-merge')
 module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false }) {
   // const devMode = process.env.NODE_ENV !== 'production'
   // 项目根路径
-  function _resolve (p) {
-    return path.resolve(__dirname, '../', p)
-  }
+  let _resolve = p => path.resolve(__dirname, '../', p)
   // 子项目路径
-  function resolve (p) {
-    return dirname === undefined ? [] : path.resolve(dirname, p)
-  }
+  let resolve = dirname && (p => path.resolve(dirname, p))
 
   function getCssLoaders () {
     function getCssLoaderComm ({ css = {} } = {}) {
@@ -56,7 +52,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false
       main: ['./src/main.js']
     },
     output: {
-      path: resolve('./dist'),
+      path: (resolve || _resolve)('./dist'),
 
       // filename: 'js/[name].[chunkhash:7].js',
       // chunkFilename: 'js/[name].bundle.[chunkhash:7].js',
@@ -70,7 +66,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           enforce: 'pre',
-          include: [_resolve('src')].concat(resolve('src')),
+          include: [_resolve('src')].concat(resolve ? resolve('src') : []),
           options: {
             formatter: require('eslint-friendly-formatter')
           }
@@ -82,7 +78,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false
         {
           test: /\.js$/,
           loader: 'babel-loader',
-          include: [_resolve('src')].concat(resolve('src'))
+          include: [_resolve('src')].concat(resolve ? resolve('src') : []),
         // exclude: ['node_modules'],
         },
         {
