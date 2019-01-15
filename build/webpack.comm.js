@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const merge = require('webpack-merge')
 
-module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = false }) {
+module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true }) {
   // const devMode = process.env.NODE_ENV !== 'production'
   // 项目根路径
   let _resolve = p => path.resolve(__dirname, '../', p)

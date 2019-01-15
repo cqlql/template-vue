@@ -15,12 +15,12 @@ const getProdConf = require('./build/webpack.prod')
 // const argv = require('yargs').argv
 // const isTest = argv['test'] === true // 有时候可能需要测试编译结果
 
-const sourceMap = true
+const sourceMap = 0
 
 const commConf = getCommConf({
   // dirname: __dirname, // 如果是根项目则不用传
   splitCss: true, // css 拆分
-  sourceMap, // webpack.comm 中目前只对 css 设置
+  sourceMap: Boolean(sourceMap), // webpack.comm 中目前只对 css 设置
   // 更改入口 index template
   indexTemplate () {
     return new HtmlWebpackPlugin({
