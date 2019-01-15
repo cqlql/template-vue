@@ -1,5 +1,5 @@
 /* eslint comma-dangle: "off" */
-// const path = require('path')
+const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
@@ -8,19 +8,16 @@ const CompileEventsPlugin = require('./build/compile-events-plugin')
 const filterRemove = require('./build/filter-remove')
 const ScriptPlugin = require('./build/script-plugin')
 const merge = require('webpack-merge')
-const getCommConf = require('./build/webpack.comm')
 const getProdConf = require('./build/webpack.prod')
 
 // 命令行参数
 // const argv = require('yargs').argv
 // const isTest = argv['test'] === true // 有时候可能需要测试编译结果
 
-const sourceMap = 0
-
-const commConf = getCommConf({
+const baseProdConf = getProdConf({
   // dirname: __dirname, // 如果是根项目则不用传
   splitCss: true, // css 拆分
-  sourceMap: Boolean(sourceMap), // webpack.comm 中目前只对 css 设置
+  sourceMap: false, // webpack.comm 中目前只对 css 设置
   // 更改入口 index template
   indexTemplate () {
     return new HtmlWebpackPlugin({
@@ -45,14 +42,10 @@ const commConf = getCommConf({
   },
 })
 
-const baseProdConf = getProdConf()
-
 // 打包输出路径设置：
-// let outputPath = path.resolve(__dirname, './dist')
-let outputPath = commConf.output.path
+let outputPath = path.resolve(__dirname, './dist')
 
 const prodConf = {
-  devtool: sourceMap ? 'source-map' : 'none',
   // 不打包的模块
   // 键为 import 调用名，值为全局名称
   externals: {
@@ -107,4 +100,4 @@ const prodConf = {
   ]
 }
 
-webpack(merge(commConf, baseProdConf, prodConf), require('./build/msg-webpack'))
+webpack(merge(baseProdConf, prodConf), require('./build/msg-webpack'))

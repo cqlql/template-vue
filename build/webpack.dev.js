@@ -3,9 +3,11 @@
 const path = require('path')
 const webpack = require('webpack')
 const getIPAdress = require('./get-ip-adress')
+const getCommConf = require('./webpack.comm')
+const merge = require('webpack-merge')
 
 // dirname 项目所在目录
-module.exports = function (dirname = path.resolve(__dirname, '../')) {
+module.exports = function (options) {
   let conf = {
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
@@ -21,7 +23,7 @@ module.exports = function (dirname = path.resolve(__dirname, '../')) {
     ],
     devServer: {
       clientLogLevel: 'warning', // 去掉没必要的控制台输出。比如 hot 情况 --progress 浏览器控制台不再显示进度输出
-      contentBase: path.resolve(dirname, 'dist'),
+      contentBase: path.resolve(options.dirname || __dirname, 'dist'),
       compress: true,
       host: getIPAdress(),
       // port: 3002,
@@ -32,5 +34,8 @@ module.exports = function (dirname = path.resolve(__dirname, '../')) {
     }
   }
 
-  return conf
+  return merge(
+    getCommConf(options),
+    conf
+  )
 }

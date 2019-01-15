@@ -1,6 +1,6 @@
 
 /* eslint comma-dangle: "off" */
-const getCommConf = require('./build/webpack.comm')
+// const getCommConf = require('./build/webpack.comm')
 const getDevConf = require('./build/webpack.dev')
 const merge = require('webpack-merge')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -53,15 +53,14 @@ const conf = {
 
 }
 // 如果webpack配置有问题，需把 require('./build/friendly-error') 去掉才能看到错误
-module.exports = require('./build/friendly-error')(merge(
-  getCommConf({
-    // dirname: __dirname, // 如果是根项目则不用传
+module.exports = require('./build/friendly-error')(
+  merge(
+    getDevConf({
+      // dirname: __dirname, // 如果是根项目则不用传
 
-    // 拆分后使用 devtool: 'cheap-module-eval-source-map' css 将定向错误。需使用 devtool: 'source-map'
-    splitCss: true,
-  }),
-  getDevConf(
-    // __dirname // 如果是根项目则不用传
-  ),
-  conf
-))
+      // 拆分后使用 devtool: 'cheap-module-eval-source-map' css 将定向错误。需使用 devtool: 'source-map'
+      splitCss: true,
+    }),
+    conf
+  )
+)

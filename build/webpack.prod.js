@@ -1,9 +1,12 @@
 /* eslint comma-dangle: "off" */
 const webpack = require('webpack')
+const getCommConf = require('./webpack.comm')
+const merge = require('webpack-merge')
 process.env.NODE_ENV = 'production'
-module.exports = function () {
+module.exports = function (options) {
   let conf = {
     mode: 'production',
+    devtool: options.sourceMap ? 'source-map' : 'none',
     plugins: [
       // 使用模块路径作为模块id。(路径为 hash)
       new webpack.HashedModuleIdsPlugin({
@@ -14,5 +17,8 @@ module.exports = function () {
     ]
   }
 
-  return conf
+  return merge(
+    getCommConf(options),
+    conf
+  )
 }
