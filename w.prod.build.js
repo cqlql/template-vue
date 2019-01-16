@@ -1,8 +1,8 @@
 /* eslint comma-dangle: "off" */
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CompileEventsPlugin = require('./build/compile-events-plugin')
 const filterRemove = require('./build/filter-remove')
@@ -15,31 +15,8 @@ const getProdConf = require('./build/webpack.prod')
 // const isTest = argv['test'] === true // 有时候可能需要测试编译结果
 
 const baseProdConf = getProdConf({
-  // dirname: __dirname, // 如果是根项目则不用传
   splitCss: true, // css 拆分
   // sourceMap: false, // 默认为 true
-  // 更改入口 index template
-  indexTemplate () {
-    return new HtmlWebpackPlugin({
-      filename: './index.html',
-      template: './src/index.html',
-      // chunks: ['main'], // 指定引入的js包，只有main情况可忽略
-      // inlineSource: /main\.js/,
-      // inlineSource: /styles\.bundle\.js/,
-      inlineSource: /(styles\.bundle\.js|main\.js)/,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        // 内嵌 css js 压缩, 结合 HtmlWebpackInlineSourcePlugin 可能会压缩2次，非必要还是不要设了
-        // minifyCSS: true,
-        // minifyJS: true
-
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      }
-    })
-  },
 })
 
 // 打包输出路径设置：
@@ -62,8 +39,6 @@ const prodConf = {
     //     APP_TEST: JSON.stringify(isAppTest + '')
     //   }
     // })
-    // 将抽离的 css、js 包含进 html 文件
-    new HtmlWebpackInlineSourcePlugin(),
     // 转 .net 的 cshtml 模板
     // new (require('./build/cshtml-plugin.js'))(),
 

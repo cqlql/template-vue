@@ -49,8 +49,13 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
         })
       },
       {
-        test: /\.scss/,
         resourceQuery: /scss/,
+        use: getCssLoaderComm({
+          scss: true
+        })
+      },
+      {
+        test: /\.scss/,
         use: getCssLoaderComm({
           scss: true
         })

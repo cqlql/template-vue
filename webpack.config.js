@@ -55,7 +55,7 @@ const conf = {
 module.exports = require('./build/friendly-error')(
   merge(
     getDevConf({
-      // dirname: __dirname, // 如果是根项目则不用传
+      // dirname: __dirname, // 如果是子项目则需要传
       // splitCss: true,
     }),
     conf
