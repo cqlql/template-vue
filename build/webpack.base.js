@@ -15,8 +15,8 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
   let resolve = dirname && (p => path.resolve(dirname, p))
 
   function getCssLoaders () {
-    function getCssLoaderComm ({ css = {} } = {}) {
-      return [
+    function getCssLoaderComm ({ css = {}, scss, less } = {}) {
+      let loaders = [
         splitCss ? MiniCssExtractPlugin.loader : 'vue-style-loader',
         {
           loader: 'css-loader',
@@ -24,10 +24,19 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
             sourceMap
           }, css)
         },
-        'postcss-loader?sourceMap=' + sourceMap
-        // 'less-loader?sourceMap=' + sourceMap, // 增加 less 支持，还需安装 less-loader
-        // 'sass-loader?sourceMap=' + sourceMap // 增加 sass 支持，还需安装 sass-loader 、 node-sass
+        'postcss-loader?sourceMap=' + sourceMap,
       ]
+      if (less) {
+        loaders.push(
+          'less-loader?sourceMap=' + sourceMap, // 增加 less 支持，还需安装 less-loader
+        )
+      }
+      if (scss) {
+        loaders.push(
+          'sass-loader?sourceMap=' + sourceMap // 增加 sass 支持，还需安装 sass-loader 、 node-sass
+        )
+      }
+      return loaders
     }
     let options = [
       {
@@ -37,6 +46,13 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
             modules: true,
             localIdentName: '[local]_[hash:base64:5]'
           }
+        })
+      },
+      {
+        test: /\.scss/,
+        resourceQuery: /scss/,
+        use: getCssLoaderComm({
+          scss: true
         })
       },
       {
@@ -82,7 +98,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
         // exclude: ['node_modules'],
         },
         {
-          test: /\.(c|le|sc)ss$/,
+          test: /\.(c|le|sc|postc)ss$/,
 
           // 一起处理
           // oneOf: getCssLoaders()
