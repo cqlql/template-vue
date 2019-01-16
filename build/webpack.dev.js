@@ -3,7 +3,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const getIPAdress = require('./get-ip-adress')
-const getCommConf = require('./webpack.comm')
+const getCommConf = require('./webpack.base')
 const merge = require('webpack-merge')
 
 // dirname 项目所在目录

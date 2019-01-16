@@ -1,6 +1,6 @@
 /* eslint comma-dangle: "off" */
 const webpack = require('webpack')
-const getCommConf = require('./webpack.comm')
+const getCommConf = require('./webpack.base')
 const merge = require('webpack-merge')
 process.env.NODE_ENV = 'production'
 module.exports = function (options) {
