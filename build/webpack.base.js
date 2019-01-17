@@ -100,6 +100,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
           test: /\.js$/,
           loader: 'babel-loader',
           include: [_resolve('src')].concat(resolve ? resolve('src') : []),
+          options: require('../babel.config')
         // exclude: ['node_modules'],
         },
         {
