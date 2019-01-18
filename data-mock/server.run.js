@@ -1,7 +1,7 @@
 // 数据模拟
 var getIPAdress = require('../build/get-ip-adress')
 var express = require('express')
-var router = require('./data')
+var router = require('./router')
 
 var bodyParser = require('body-parser')
 
