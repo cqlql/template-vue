@@ -160,7 +160,7 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
             // chunks: ['main'] // 默认所有入口
           })
         }
-        if (indexTemplate === false) return [] // 为 false 则不要模板
+        if (indexTemplate === null) return [] // 为 null 则不要模板
         return indexTemplate()
       }()
     ),
