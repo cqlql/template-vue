@@ -75,4 +75,12 @@ const prodConf = {
   ]
 }
 
+// 检查编译代码
+// const checkConf = {
+//   mode: 'none',
+//   output: {
+//     pathinfo: true // 模块标注路径信息
+//   }
+// }
+
 webpack(merge(baseProdConf, prodConf), require('./build/msg-webpack'))

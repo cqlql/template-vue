@@ -32,15 +32,14 @@ module.exports = function (options) {
     mode: 'production',
     devtool: options.sourceMap ? 'source-map' : 'none',
     plugins: [
-      // 使用模块路径作为模块id。(路径为 hash)
+      // 使用模块路径作为模块id。(路径转为 hash)
       new webpack.HashedModuleIdsPlugin({
         // hashDigestLength: 7 // 默认 4
       }),
+      // 使用模块路径作为模块id。(真实路径，测试用)
+      // new webpack.NamedModulesPlugin(),
       // 将抽离的 css、js 包含进 html 文件
       // new HtmlWebpackInlineSourcePlugin(),
-
-      // 使用模块路径作为模块id。(物理路径，测试用) // 目前 develoment 模式默认
-      // new webpack.NamedModulesPlugin(),
     ]
   }
 

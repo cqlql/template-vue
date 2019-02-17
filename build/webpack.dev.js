@@ -15,7 +15,7 @@ module.exports = function (options) {
     // devtool: 'source-map',
     watch: true,
     output: {
-      pathinfo: true,
+      pathinfo: true, // 模块标注路径信息
       filename: 'js/[name].js?_=[hash:7]',
       chunkFilename: 'js/[name].bundle.js?_=[hash:7]',
     },
