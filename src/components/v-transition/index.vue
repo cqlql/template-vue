@@ -1,9 +1,11 @@
 <template>
-  <transition :name="name"
-        :enter-active-class="activeClass"
-        :leave-active-class="activeClass">
-    <slot></slot>
-  </transition>
+  <Transition
+    :name="name"
+    :enter-active-class="activeClass"
+    :leave-active-class="activeClass"
+  >
+    <slot />
+  </Transition>
 </template>
 
 <script>
@@ -29,6 +31,7 @@ export default {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
 .slide-left-enter, .slide-right-leave-to {
   opacity: 0;
   transform: translate3d(30px, 0, 0);
@@ -37,6 +40,15 @@ export default {
   opacity: 0;
   transform: translate3d(-30px, 0, 0);
 }
+
+.slide-in-down-enter, .slide-in-down-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -30px, 0);
+}
+/* .slide-left-leave-to, .slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+} */
 .zoom-in-enter, .zoom-out-leave-to {
   opacity: 0;
   transform: scale(0.8);

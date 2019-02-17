@@ -1,15 +1,6 @@
 <template>
-  <button class="b-btn" :class="[s?'b-'+s:'']">
-    <slot/>
-  </button>
+  <button class="b-btn"><slot/></button>
 </template>
-<script>
-export default {
-  props: {
-    s: String
-  }
-}
-</script>
 
 <style scoped>
 .b-btn {

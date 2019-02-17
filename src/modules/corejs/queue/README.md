@@ -2,25 +2,29 @@
 
 # 队列
 
-
 ## 示例
 
-```js
-this.queue.excu(next => {
-  let x = this.x
-  let y = this.y
+队列1：第一个执行完再进行下一个，直到完成
 
-  if (this.preX === x && this.preY === y) {
+```js
+const queue = new Queue()
+queue.excu(next => {
+  setTimeout(function () {
+    // 执行队列下一个
+    // 失败将返回 false
     next()
-  } else {
-    classList.add('transition-active')
-    transitionendOnce($el, function () {
-      classList.remove('transition-active')
-      next()
-    })
-    $el.style[transform] = `translate(${x}px,${y}px)`
-  }
+
+  }, 1000)
 })
 ```
 
-## next() 失败将返回 false
+队列2：
+
+```js
+const queueWait = new QueueWait
+queueWait.add(function (params) {
+  console.log(params === '可以传递参数') // true
+})
+queueWait.excu('可以传递参数') // 执行所有 add 的函数
+queueWait.clear()
+```

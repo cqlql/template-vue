@@ -2,7 +2,7 @@
  * DragZoom
  * */
 
-import drag from '../corejs/drag/drag-mobile'
+import drag from '../corejs/dom-drag/drag-mobile'
 
 export default function ({elem, onStart, onMove}) {
   let zStartLen

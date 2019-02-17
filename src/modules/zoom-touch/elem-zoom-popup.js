@@ -3,7 +3,7 @@
  * */
 import ZoomTouch from './elem-zoom'
 import popup from '../popup/popup-single'
-import autoPrefix from '../corejs/dom/css/autoprefix'
+import autoPrefix from '../corejs/dom-css/autoprefix'
 import click from '../corejs/dom/click'
 
 export default function (elem, css, created) {
@@ -33,7 +33,7 @@ export default function (elem, css, created) {
       let {style} = el
       for (let name in css) {
         if (css.hasOwnProperty(name)) {
-          style[autoPrefix(name)[1]] = css[name]
+          style[autoPrefix(name)] = css[name]
         }
       }
     }
@@ -61,7 +61,7 @@ export default function (elem, css, created) {
         style.overflow = 'visible'
         style.left = '0'
         style.top = '0'
-        style[autoPrefix('transform')[1]] = 'none'
+        style[autoPrefix('transform')] = 'none'
         style.boxShadow = 'none'
         style.backgroundColor = 'transparent'
         elemCont.replaceChild(elzBox, elemCont.firstElementChild)

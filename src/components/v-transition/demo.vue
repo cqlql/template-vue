@@ -4,7 +4,7 @@
     <div class="item">
       <button @click="isShow=!isShow">fade 显示/隐藏</button>
       <VTransition>
-        <div class="cont" v-show="isShow">fade</div>
+        <div v-show="isShow" class="cont">fade</div>
       </VTransition>
       <pre>
       &lt;VTransition&gt;
@@ -15,7 +15,7 @@
     <div class="item">
       <button @click="isShowSlide=!isShowSlide">slide 显示/隐藏</button>
       <VTransition :name="isShowSlide?'slide-left':'slide-right'">
-        <div class="cont" v-show="isShowSlide">slide-left/slide-right</div>
+        <div v-show="isShowSlide" class="cont">slide-left/slide-right</div>
       </VTransition>
       <pre>
       &lt;VTransition :name="isShowSlide?'slide-left':'slide-right'"&gt;
@@ -26,7 +26,18 @@
     <div class="item">
       <button @click="isShowZoom=!isShowZoom">zoom 显示/隐藏</button>
       <VTransition :name="isShowZoom?'zoom-in':'zoom-out'">
-        <div class="cont" v-show="isShowZoom">zoom-in/zoom-out</div>
+        <div v-show="isShowZoom" class="cont">zoom-in/zoom-out</div>
+      </VTransition>
+      <pre>
+      &lt;VTransition :name="isShowZoom?'zoom-in':'zoom-out'"&gt;
+        &lt;div class="cont" v-show="isShowZoom"&gt;zoom-in/zoom-out&lt;/div&gt;
+      &lt;/VTransition&gt;</pre>
+    </div>
+
+    <div class="item">
+      <button @click="isShowSlideInDown=!isShowSlideInDown">slide-in-down 显示/隐藏</button>
+      <VTransition name="slide-in-down">
+        <div v-show="isShowSlideInDown" class="cont">slide-in-down</div>
       </VTransition>
       <pre>
       &lt;VTransition :name="isShowZoom?'zoom-in':'zoom-out'"&gt;
@@ -37,7 +48,7 @@
     <div class="item">
       <button @click="isShowBottom=!isShowBottom">slide-bottom 显示/隐藏</button>
       <VTransition name="slide-bottom">
-        <div class="cont slide-bottom" v-show="isShowBottom">slide-bottom</div>
+        <div v-show="isShowBottom" class="cont slide-bottom">slide-bottom</div>
       </VTransition>
       <pre>
       &lt;VTransition name="slide-bottom"&gt;
@@ -45,22 +56,22 @@
       &lt;/VTransition&gt;</pre>
     </div>
   </div>
-
 </template>
 
 <script>
-import VTransition from '../v-transition'
+import VTransition from '@/components/v-transition'
 export default {
+  components: {
+    VTransition
+  },
   data () {
     return {
       isShow: true,
       isShowSlide: true,
       isShowZoom: true,
-      isShowBottom: true
+      isShowBottom: true,
+      isShowSlideInDown: true
     }
-  },
-  components: {
-    VTransition
   }
 }
 </script>
@@ -97,4 +108,3 @@ pre {
   bottom: 0;
 }
 </style>
-

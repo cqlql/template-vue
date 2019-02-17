@@ -1,7 +1,5 @@
 <template>
-  <button class="b-btn" :class="[s?'b-'+s:'']">
-    <slot/>
-  </button>
+  <button class="b-btn" :class="s"><slot/></button>
 </template>
 <script>
 export default {
@@ -29,16 +27,16 @@ export default {
   }
 }
 
-.b-green {
+.green {
   border: 1px solid #1ab394;
   color: #1ab394;
 }
 
-.b-red {
+.red {
   border: 1px solid #ed5564;
   color: #ed5564;
 }
-.b-gray {
+.gray {
   border: 1px solid #afafaf;
   background-color: #f3f3f4;
   color: #afafaf;

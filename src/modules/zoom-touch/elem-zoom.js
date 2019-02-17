@@ -1,5 +1,5 @@
 import drag from './drag-zoom'
-import autoPrefix from '../corejs/dom/css/autoprefix'
+import autoPrefix from '../corejs/dom-css/autoprefix'
 import offsetxy from '../corejs/dom/offsetxy'
 
 /**
@@ -10,7 +10,7 @@ import offsetxy from '../corejs/dom/offsetxy'
  * */
 export default class {
   init ({elem, elemz}) {
-    const transform = autoPrefix('transform')[1]
+    const transform = autoPrefix('transform')
 
     let {left: elPageX, top: elPagey} = offsetxy(elemz)
     let {clientWidth: elw, clientHeight: elh} = elem // 容器高宽

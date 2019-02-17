@@ -1,6 +1,6 @@
 import transitionendOnce from '../transitionend-once'
-import autoprefix from '../../dom/css/autoprefix'
-let transform = autoprefix('transform')[1]
+import autoprefix from '../../dom-css/autoprefix'
+let transform = autoprefix('transform')
 export default class AnimateTransformY {
   constructor () {
     this.y = 0
