@@ -76,11 +76,11 @@ const prodConf = {
 }
 
 // 检查编译代码
-// const checkConf = {
-//   mode: 'none',
-//   output: {
-//     pathinfo: true // 模块标注路径信息
-//   }
-// }
+const checkConf = {
+  // mode: 'none', // 不压缩代码
+  // output: {
+  //   pathinfo: true // 模块标注路径信息
+  // }
+}
 
-webpack(merge(baseProdConf, prodConf), require('./build/msg-webpack'))
+webpack(merge(baseProdConf, prodConf, checkConf), require('./build/msg-webpack'))
