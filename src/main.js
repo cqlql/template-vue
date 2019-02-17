@@ -4,7 +4,7 @@ import '@/comm.css'
 /*
   虽然已经按需 polyfill，但如果 src 中没使用 promise，node_modules 中有使用, 不支持 promise 的浏览器还是会报错，
   比如动态 import() 就有对 promise 的使用，所以这里手动引入
-  但正式项目肯定会用 promise，这里只是模板项目
+  当然，正式项目肯定会用 promise，这里只是模板项目
 */
 import 'core-js/modules/es6.promise.js'
 
