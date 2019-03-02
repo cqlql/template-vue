@@ -16,8 +16,8 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   // 开发环境
 
-  // 使用 nav-dev.js 中的路由
-  routes = require('./nav-dev.js').default
+  // 使用 dev.nav.js 中的路由
+  routes = require('./dev.nav.js').default
 }
 
 // 404

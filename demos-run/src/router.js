@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import navDev from './nav-dev'
+import devNav from './dev.nav'
 
 let routes = []
 
@@ -20,7 +20,7 @@ function importAll (r) {
 // 编译指定 demo
 importAll(require.context('@/', true, /^\.\/(components|modules)\/(toast|confirm|debug-msg|zoom-touch).*[/.-]demo\.vue$/))
 
-navDev(routes)
+devNav(routes)
 
 export default new Router({
   routes: routes
