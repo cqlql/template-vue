@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+const babelOptions = {
   "presets": [
     ["@babel/preset-env", {
       // "modules": 'auto',
@@ -13,4 +14,6 @@ module.exports = {
     "@babel/plugin-syntax-dynamic-import",
     // "transform-vue-jsx"
   ]
-}
+};
+
+module.exports = require('babel-jest').createTransformer(babelOptions);

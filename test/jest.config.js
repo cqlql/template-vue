@@ -1,13 +1,15 @@
 module.exports = {
-  "rootDir": "../",
-  // "testMatch": [ 
-  //   "**/test/?(*.)+(spec|test).[jt]s?(x)"
-  //   // "**/?(*.)+(spec|test).[jt]s?(x)"
+  verbose: true,
+  'rootDir': '../',
+  testMatch: ['<rootDir>/test/**/*.test.js'],
+  // 'testRegex': [
+  //   '/test/unit/.+(test|spec)\\.[jt]sx?$'
   // ],
-  "testRegex": [
-    "/test/unit/.+(test|spec)\\.[jt]sx?$"
-  ],
-  "moduleNameMapper": {
-    "@/(.*)$": "<rootDir>/src/$1"
-  }
+  testPathIgnorePatterns: ['/src/', 'node_modules'],
+  'moduleNameMapper': {
+    // 同步 webpack 别名
+    '@/(.*)$': '<rootDir>/src/$1'
+  },
+  
+  transform: { '^.+\\.js$': '<rootDir>/test/jest-preprocess.js' },
 }
