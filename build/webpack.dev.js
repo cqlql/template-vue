@@ -26,6 +26,7 @@ module.exports = function (options) {
       clientLogLevel: 'warning', // 去掉没必要的控制台输出。比如 hot 情况 --progress 浏览器控制台不再显示进度输出
       contentBase: path.resolve(options.dirname || __dirname, 'dist'),
       compress: true,
+      // historyApiFallback: true, // HTML5 History 模式情况开启
       host: getIPAdress(),
       // port: 3002,
       // openPage: 'http://192.168.1.222',
