@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Transition
+    <transition
       :name="slideName"
       :enter-active-class="'leave '+activeClass"
       :leave-active-class="activeClass"
     >
       <RouterView />
-    </Transition>
+    </transition>
   </div>
 </template>
 
