@@ -94,14 +94,43 @@ module.exports = function ({ dirname, indexTemplate, splitCss, sourceMap = true 
         // },
         {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          use: [
+            {
+              loader: 'cache-loader',
+              options: {
+                cacheDirectory: _resolve('node_modules/.cache/vue-loader'),
+                // cacheIdentifier: '51f779c4'
+              }
+            },
+            {
+              loader: 'vue-loader',
+              options: {
+                // compilerOptions: {
+                //   preserveWhitespace: false
+                // },
+                cacheDirectory: _resolve('node_modules/.cache/vue-loader'),
+                // cacheIdentifier: '51f779c4'
+              },
+            }
+          ]
         },
         {
           test: /\.js$/,
-          loader: 'babel-loader',
           include: [_resolve('src')].concat(resolve ? resolve('src') : []),
-          options: require('../babel.config')
-        // exclude: ['node_modules'],
+          use: [
+            {
+              loader: 'cache-loader',
+              options: {
+                cacheDirectory: _resolve('node_modules/.cache/babel-loader'),
+                // cacheIdentifier: '51f779c4'
+              }
+            },
+            {
+              loader: 'babel-loader',
+              options: require('../babel.config'),
+              // exclude: ['node_modules'],
+            }
+          ]
         },
         {
           test: /\.(c|le|sc|postc)ss$/,
