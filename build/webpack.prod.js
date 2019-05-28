@@ -51,8 +51,9 @@ module.exports = function (options) {
           terserOptions: {
             output: {
               // 设置仅仅只有 ascii 十六进制写法被转义
-              // 否则所有 Unicode 十六进制写法将被转义，比如换行的 \u0085 被编码成真正的换行，部分环境报错
-              // 但所有的非ascii的原意字符都将被转换成十六进制
+              // 否则所有 Unicode 十六进制写法将被转义，比如ISO-8859-n控制字符 \u0085 被编码成真正的换行，部分环境报错
+              // ascii 的换行 \x0a 会被转义成 \n，不会出现真正的换行
+              // 但所有的非ascii的原义字符都将被转换成十六进制
               ascii_only: true
             }
           },
