@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const getCommConf = require('./webpack.base')
 const merge = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin')
-process.env.NODE_ENV = 'production'
 module.exports = function (options) {
+  process.env.NODE_ENV = 'production'
   if (options.indexTemplate === undefined) {
     options.indexTemplate = function () {
       return new HtmlWebpackPlugin({
@@ -31,7 +31,7 @@ module.exports = function (options) {
   }
   let conf = {
     mode: 'production',
-    devtool: options.sourceMap ? 'source-map' : 'none',
+    devtool: options.sourceMap === false ? 'none' : 'source-map',
     plugins: [
       // 使用模块路径作为模块id。(路径转为 hash)
       new webpack.HashedModuleIdsPlugin({
